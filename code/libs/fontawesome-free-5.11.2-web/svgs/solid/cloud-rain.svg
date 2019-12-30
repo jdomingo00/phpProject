@@ -1,0 +1,30 @@
+'use strict'
+
+const assert = require('assert')
+const Buffer = require('buffer').Buffer
+const realZlib = require('zlib')
+
+const constants = exports.constants = require('./constants.js')
+const MiniPass = require('minipass')
+
+const OriginalBufferConcat = Buffer.concat
+
+class ZlibError extends Error {
+  constructor (msg, errno) {
+    super('zlib: ' + msg)
+    this.errno = errno
+    this.code = codes.get(errno)
+  }
+
+  get name () {
+    return 'ZlibError'
+  }
+}
+
+// translation table for return codes.
+const codes = new Map([
+  [constants.Z_OK, 'Z_OK'],
+  [constants.Z_STREAM_END, 'Z_STREAM_END'],
+  [constants.Z_NEED_DICT, 'Z_NEED_DICT'],
+  [constants.Z_ERRNO, 'Z_ERRNO'],
+  [constants.Z_STREAM_

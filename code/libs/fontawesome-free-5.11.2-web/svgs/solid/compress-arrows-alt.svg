@@ -1,0 +1,6 @@
+/**
+ * @license Angular v8.2.9
+ * (c) 2010-2019 Google LLC. https://angular.io/
+ * License: MIT
+ */
+!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("@angular/common"),require("@angular/core"),require("rxjs"),require("rxjs/operators"),require("@angular/platform-browser")):"function"==typeof define&&define.amd?define("@angular/router",["exports","@angular/common","@angular/core","rxjs","rxjs/operators","@angular/platform-browser"],e):e(((t=t||self).ng=t.ng||{},t.ng.router={}),t.ng.common,t.ng.core,t.rxjs,t.rxjs.operators,t.ng.platformBrowser)}(this,function(t,e,r,n,o,i){"use strict";var a=function(t,e){return(a=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var r in e)e.hasOwnProperty(r)&&(t[r]=e[r])}

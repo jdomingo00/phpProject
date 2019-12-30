@@ -1,0 +1,16 @@
+// Except for a block in #visitImport, everything here is an exact copy of the
+// source in stylus this currently depends on. If stylus is updated, update
+// this appropriately.
+
+var Evaluator = require('stylus/lib/visitor/evaluator')
+  , nodes = require('stylus/lib/nodes')
+  , Stack = require('stylus/lib/stack')
+  , Frame = require('stylus/lib/stack/frame')
+  , Scope = require('stylus/lib/stack/scope')
+  , utils = require('stylus/lib/utils')
+  , bifs = require('stylus/lib/functions')
+  , basename = require('path').basename
+  , dirname = require('path').dirname
+  , relative = require('path').relative
+  , join = require('path').join
+  , c

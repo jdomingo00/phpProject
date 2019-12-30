@@ -1,0 +1,19 @@
+onent/**/*.js': {
+              statements: 98
+            }
+          }
+        }
+      },
+
+      verbose: true // output config used by istanbul for debugging
+    }
+  });
+};
+```
+
+### List of reporters and options
+
+- [clover](https://github.com/istanbuljs/istanbuljs/blob/aae256fb8b9a3d19414dcf069c592e88712c32c6/packages/istanbul-reports/lib/clover/index.js#L8-L9)
+- [cobertura](https://github.com/istanbuljs/istanbuljs/blob/aae256fb8b9a3d19414dcf069c592e88712c32c6/packages/istanbul-reports/lib/cobertura/index.js#L9-L10)
+- [html](https://github.com/istanbuljs/istanbuljs/blob/aae256fb8b9a3d19414dcf069c592e88712c32c6/packages/istanbul-reports/lib/html/index.js#L135-L137)
+- [json-summary](https://github.com/istanbuljs/istanbuljs/blob/aa

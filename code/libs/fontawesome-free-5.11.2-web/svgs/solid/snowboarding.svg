@@ -1,0 +1,29 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.pitch = pitch;
+exports.default = _default;
+
+var _module = _interopRequireDefault(require("module"));
+
+var _path = _interopRequireDefault(require("path"));
+
+var _loaderUtils = _interopRequireDefault(require("loader-utils"));
+
+var _NodeTemplatePlugin = _interopRequireDefault(require("webpack/lib/node/NodeTemplatePlugin"));
+
+var _NodeTargetPlugin = _interopRequireDefault(require("webpack/lib/node/NodeTargetPlugin"));
+
+var _LibraryTemplatePlugin = _interopRequireDefault(require("webpack/lib/LibraryTemplatePlugin"));
+
+var _SingleEntryPlugin = _interopRequireDefault(require("webpack/lib/SingleEntryPlugin"));
+
+var _LimitChunkCountPlugin = _interopRequireDefault(require("webpack/lib/optimize/LimitChunkCountPlugin"));
+
+var _schemaUtils = _interopRequireDefault(require("schema-utils"));
+
+var _options = _interopRequireDefault(require("./options.json"));
+
+function _interopRequireDefault(obj) { return obj && obj.__

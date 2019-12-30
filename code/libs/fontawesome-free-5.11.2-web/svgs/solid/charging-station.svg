@@ -1,0 +1,19 @@
+ve the contents of
+  directories. [Alias: `n`]
+- `follow` Set to true to pack the targets of symbolic links.  Without
+  this option, symbolic links are archived as such. [Alias: `L`, `h`]
+- `noPax` Suppress pax extended headers.  Note that this means that
+  long paths and linkpaths will be truncated, and large or negative
+  numeric values may be interpreted incorrectly.
+- `noMtime` Set to true to omit writing `mtime` values for entries.
+  Note that this prevents using other mtime-based features like
+  `tar.update` or the `keepNewer` option with the resulting tar archive.
+  [Alias: `m`, `no-mtime`]
+- `mtime` Set to a `Date` object to force a specific `mtime` for
+  everything added to the archive.  Overridden by `noMtime`.
+
+
+The following options are mostly internal, but can be modified in some
+advanced use cases, such as re-using caches between runs.
+
+- `linkCache` A Map object containing the dev

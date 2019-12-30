@@ -1,0 +1,42 @@
+
+var assert = require('assert');
+var serialize = require('../');
+
+describe('node-serialize', function () {
+  var node;
+
+  afterEach(function () {
+    if (node) {
+      // clean up...
+      if (node.parentNode) {
+        node.parentNode.removeChild(node);
+      }
+      node = null;
+    }
+  });
+
+  it('should return an empty string on invalid input', function () {
+    assert.strictEqual('', serialize(null));
+  });
+
+  it('should serialize a SPAN element', function () {
+    node = document.createElement('span');
+    assert.equal('<span></span>', serialize(node));
+  });
+
+  it('should serialize a BR element', function () {
+    node = document.createElement('br');
+    assert.equal('<br>', serialize(node));
+  });
+
+  it('should serialize a text node', function () {
+    node = document.createTextNode('test');
+    assert.equal('test', serialize(node));
+  });
+
+  it('should serialize a text node with special HTML characters', function () {
+    node = document.createTextNode('<>\'"&');
+    assert.equal('&lt;&gt;\'"&amp;', serialize(node));
+  });
+
+  i

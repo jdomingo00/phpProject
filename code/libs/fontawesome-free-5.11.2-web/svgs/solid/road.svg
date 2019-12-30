@@ -1,0 +1,20 @@
+tPrettyTextNodes) {
+          ref1 = node.children;
+          for (i = 0, len = ref1.length; i < len; i++) {
+            child = ref1[i];
+            if ((child.type === NodeType.Text || child.type === NodeType.Raw) && (child.value != null)) {
+              options.suppressPrettyCount++;
+              prettySuppressed = true;
+              break;
+            }
+          }
+        }
+        r += '>' + this.endline(node, options, level);
+        options.state = WriterState.InsideTag;
+        ref2 = node.children;
+        for (j = 0, len1 = ref2.length; j < len1; j++) {
+          child = ref2[j];
+          r += this.writeChildNode(child, options, level + 1);
+        }
+        options.state = WriterState.CloseTag;
+        r += this.indent(node, options, level) + 

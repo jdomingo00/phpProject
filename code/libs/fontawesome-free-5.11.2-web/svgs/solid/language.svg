@@ -1,0 +1,37 @@
+Output customization
+====================
+
+If you want to add extra information to the reporter output, you can build your own display processor and add it to options in the customProcessors array.
+
+# Example
+
+Let's say that you want to add the current time before each output of the reporter in order to have something like this:
+
+    Spec started
+
+      10:40:12 - first suite
+        10:40:12 - ✓ should be ok
+        10:40:21 - ✗ should failed
+          - Expected true to be false.
+        10:40:35 - ✓ should be ok
+
+
+## Build your display processor
+
+You need to require the display processor:
+
+```node
+var DisplayProcessor = require('jasmine-spec-reporter').DisplayProcessor;
+```
+
+You can then customize the following methods:
+* displayJasmineStarted(runner, log)
+* displaySuite(suite, log)
+* displaySpecStarted(spec, log)
+* displaySuccessfulSpec(spec, log)
+* displayFailedSpec(spec, log)
+* displaySpecErrorMessages(spec, log)
+* displaySummaryErrorMessages(spec, log)
+* displayPendingSpec(spec, log)
+
+The first argument is the jasmine object correspondin

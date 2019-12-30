@@ -1,0 +1,18 @@
+define(['exports', './utils', './exception', './helpers', './decorators', './logger'], function (exports, _utils, _exception, _helpers, _decorators, _logger) {
+  'use strict';
+
+  exports.__esModule = true;
+  exports.HandlebarsEnvironment = HandlebarsEnvironment;
+  // istanbul ignore next
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  var _Exception = _interopRequireDefault(_exception);
+
+  var _logger2 = _interopRequireDefault(_logger);
+
+  var VERSION = '4.4.2';
+  exports.VERSION = VERSION;
+  var COMPILER_REVISION = 8;
+  exports.COMPILER_REVISION = COMPILER_REVISION;
+  var LAST_COMPATIBLE_COMPILER_REVISION

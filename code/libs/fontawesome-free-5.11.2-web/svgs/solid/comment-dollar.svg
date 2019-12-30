@@ -1,0 +1,29 @@
+},
+//   { line: 2,
+//     column: 10,
+//     lastColumn: 19 },
+//   { line: 2,
+//     column: 20,
+//     lastColumn: Infinity } ]
+
+```
+
+#### SourceMapConsumer.prototype.originalPositionFor(generatedPosition)
+
+Returns the original source, line, and column information for the generated
+source's line and column positions provided. The only argument is an object with
+the following properties:
+
+* `line`: The line number in the generated source.  Line numbers in
+  this library are 1-based (note that the underlying source map
+  specification uses 0-based line numbers -- this library handles the
+  translation).
+
+* `column`: The column number in the generated source.  Column numbers
+  in this library are 0-based.
+
+* `bias`: Either `SourceMapConsumer.GREATEST_LOWER_BOUND` or
+  `SourceMapConsumer.LEAST_UPPER_BOUND`. Specifies whether to return the closest
+  element that is smaller than or greater than the one we are searching for,
+  respectively, if the exact element cannot be found.  Defaults to
+  `Sou

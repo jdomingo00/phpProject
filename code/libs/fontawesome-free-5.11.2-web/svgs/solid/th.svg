@@ -1,0 +1,36 @@
+following.
+	 *   - file: Optional. The generated file this source map is associated with.
+	 *   - sections: A list of section definitions.
+	 *
+	 * Each value under the "sections" field has two fields:
+	 *   - offset: The offset into the original specified at which this section
+	 *       begins to apply, defined as an object with a "line" and "column"
+	 *       field.
+	 *   - map: A source map definition. This source map could also be indexed,
+	 *       but doesn't have to be.
+	 *
+	 * Instead of the "map" field, it's also possible to have a "url" field
+	 * specifying a URL to retrieve a source map from, but that's currently
+	 * unsupported.
+	 *
+	 * Here's an example source map, taken from the source map spec[0], but
+	 * modified to omit a section which uses the "url" field.
+	 *
+	 *  {
+	 *    version : 3,
+	 *    file: "app.js",
+	 *    sections: [{
+	 *      offset: {line:100, column:10},
+	 *      map: {
+	 *        version : 3,
+	 *        file: "section.js",
+	 *        sources: ["foo.js", "bar.js"],
+	 *        names: ["src", "maps", "are", "fun"],
+	 *        mappings: "AAAA,E;;ABCDE;"
+	 *      }
+	 *    }],
+	 *  }
+	 *
+	 * The second parameter, if given, is a string whose value is the URL
+	 * at which the source map was found.  This URL is used to compute the
+	

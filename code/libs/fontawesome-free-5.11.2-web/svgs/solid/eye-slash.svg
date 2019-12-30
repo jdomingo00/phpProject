@@ -1,0 +1,17 @@
+egisterModuleFactory);
+    map.set(Identifiers.Injector, Injector);
+    map.set(Identifiers.ViewEncapsulation, ViewEncapsulation);
+    map.set(Identifiers.ChangeDetectionStrategy, ChangeDetectionStrategy);
+    map.set(Identifiers.SecurityContext, SecurityContext);
+    map.set(Identifiers.LOCALE_ID, LOCALE_ID);
+    map.set(Identifiers.TRANSLATIONS_FORMAT, TRANSLATIONS_FORMAT);
+    map.set(Identifiers.inlineInterpolate, ɵinlineInterpolate);
+    map.set(Identifiers.interpolate, ɵinterpolate);
+    map.set(Identifiers.EMPTY_ARRAY, ɵEMPTY_ARRAY);
+    map.set(Identifiers.EMPTY_MAP, ɵEMPTY_MAP);
+    map.set(Identifiers.Renderer, Renderer);
+    map.set(Identifiers.viewDef, ɵvid);
+    map.set(Identifiers.elementDef, ɵeld);
+    map.set(Identifiers.anchorDef, ɵand);
+    map.set(Identifiers.textDef, ɵted);
+  

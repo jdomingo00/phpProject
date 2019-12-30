@@ -1,0 +1,27 @@
+# jsprim: utilities for primitive JavaScript types
+
+This module provides miscellaneous facilities for working with strings,
+numbers, dates, and objects and arrays of these basic types.
+
+
+### deepCopy(obj)
+
+Creates a deep copy of a primitive type, object, or array of primitive types.
+
+
+### deepEqual(obj1, obj2)
+
+Returns whether two objects are equal.
+
+
+### isEmpty(obj)
+
+Returns true if the given object has no properties and false otherwise.  This
+is O(1) (unlike `Object.keys(obj).length === 0`, which is O(N)).
+
+### hasKey(obj, key)
+
+Returns true if the given object has an enumerable, non-inherited property
+called `key`.  [For information on enumerability and ownership of properties, see
+the MDN
+documentati

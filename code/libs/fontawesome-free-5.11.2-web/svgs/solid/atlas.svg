@@ -1,0 +1,13 @@
+type.readInjectableMetadata = function (d, dec) {
+        var providedInExpression = utils_1.getDecoratorPropertyInitializer(dec, 'providedIn');
+        return new metadata_1.InjectableMetadata(d, dec, providedInExpression);
+    };
+    MetadataReader.prototype.readComponentMetadata = function (d, dec) {
+        var _this = this;
+        var expr = this.getDecoratorArgument(dec);
+        var directiveMetadata = this.readDirectiveMetadata(d, dec);
+        var external_M = expr.fmap(function () { return _this.urlResolver.resolve(dec); });
+        var animations_M = external_M.bind(function () { return _this.readComponentAnimationsMetadata(dec); });
+        var style_M = external_M.bind(function (external) { return _this.readComponentStylesMetadata(dec, external); });
+        var template_M = external_M.bind(function (external) { return _this.readComponentTemplateMetadata(dec, external); });
+        return new metadata_1.Compon
