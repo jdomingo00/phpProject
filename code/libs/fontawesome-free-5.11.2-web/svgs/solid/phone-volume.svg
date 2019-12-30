@@ -1,0 +1,35 @@
+ // (e.g. the files does not exist)
+	 *    promiseRead('doesnt_exist.txt').then(console.log, console.error);
+	 *
+	 *
+	 * @param {Function} f node-style function to be lifted
+	 * @param {...*} [args] arguments to be prepended for the new function @deprecated
+	 * @returns {Function} a promise-returning function
+	 */
+	function lift(f /*, args... */) {
+		var args1 = arguments.length > 1 ? slice.call(arguments, 1) : [];
+		return function() {
+			// TODO: Simplify once partialing has been removed
+			var l = args1.length;
+			var al = arguments.length;
+			var args = new Array(al + l);
+			var i;
+			for(i=0; i<l; ++i) {
+				args[i] = args1[i];
+			}
+			for(i=0; i<al; ++i) {
+				args[i+l] = arguments[i];
+			}
+			return _apply(f, this, args);
+		};
+	}
+
+	/**
+	 * Lift all the functions/methods on src
+	 * @param {object|function} src source whose functions will be lifted
+	 * @param {function?} combine optional function for customizing the lifting
+	 *  process. It is passed dst, the lifted function, and the property name of
+	 *  the original function on src.
+	 * @param {(object|function)?} dst option destination host onto which to place lifted
+	 *  functions. If not provided, liftAll returns a new object.
+	 * @returns {*} If dst is provided, re

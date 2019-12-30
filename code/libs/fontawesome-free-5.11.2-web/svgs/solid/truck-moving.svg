@@ -1,0 +1,26 @@
+/** @license MIT License (c) copyright B Cavalier & J Hann */
+
+/**
+ * cancelable.js
+ * @deprecated
+ *
+ * Decorator that makes a deferred "cancelable".  It adds a cancel() method that
+ * will call a special cancel handler function and then reject the deferred.  The
+ * cancel handler can be used to do resource cleanup, or anything else that should
+ * be done before any other rejection handlers are executed.
+ *
+ * Usage:
+ *
+ * var cancelableDeferred = cancelable(when.defer(), myCancelHandler);
+ *
+ * @author brian@hovercraftstudios.com
+ */
+
+(function(define) {
+define(function() {
+
+    /**
+     * Makes deferred cancelable, adding a cancel() method.
+	 * @deprecated
+     *
+     * @param deferred {Deferred} the

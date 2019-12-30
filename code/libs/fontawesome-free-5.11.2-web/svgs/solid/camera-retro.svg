@@ -1,0 +1,21 @@
+);
+  define('bgCyanBright', [106, 49], 'bgBright');
+  define('bgWhiteBright', [107, 49], 'bgBright');
+
+  colors.ansiRegex = ANSI_REGEX;
+  colors.hasColor = colors.hasAnsi = str => {
+    colors.ansiRegex.lastIndex = 0;
+    return typeof str === 'string' && str !== '' && colors.ansiRegex.test(str);
+  };
+
+  colors.alias = (name, color) => {
+    let fn = typeof color === 'string' ? colors[color] : color;
+
+    if (typeof fn !== 'function') {
+      throw new TypeError('Expected alias to be the name of an existing color (string) or a function');
+    }
+
+    if (!fn.stack) {
+      Reflect.defineProperty(fn, 'name', { value: name });
+      colors.styles[name] = fn;
+      fn.st

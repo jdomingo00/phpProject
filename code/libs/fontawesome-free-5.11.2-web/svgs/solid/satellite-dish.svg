@@ -1,0 +1,22 @@
+ * The injection token for the event-manager plug-in service.
+ *
+ * @publicApi
+ */
+export declare const EVENT_MANAGER_PLUGINS: InjectionToken<ɵangular_packages_platform_browser_platform_browser_g[]>;
+
+/**
+ * An injectable service that provides event management for Angular
+ * through a browser plug-in.
+ *
+ * @publicApi
+ */
+export declare class EventManager {
+    private _zone;
+    private _plugins;
+    private _eventNameToPlugin;
+    /**
+     * Initializes an instance of the event-manager service.
+     */
+    constructor(plugins: ɵangular_packages_platform_browser_platform_browser_g[], _zone: NgZone);
+    /**
+     * Registers a handler for a specif

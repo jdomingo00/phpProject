@@ -1,0 +1,17 @@
+/** PURE_IMPORTS_START tslib,_scheduler_async,_util_isDate,_OuterSubscriber,_util_subscribeToResult PURE_IMPORTS_END */
+import * as tslib_1 from "tslib";
+import { async } from '../scheduler/async';
+import { isDate } from '../util/isDate';
+import { OuterSubscriber } from '../OuterSubscriber';
+import { subscribeToResult } from '../util/subscribeToResult';
+export function timeoutWith(due, withObservable, scheduler) {
+    if (scheduler === void 0) {
+        scheduler = async;
+    }
+    return function (source) {
+        var absoluteTimeout = isDate(due);
+        var waitFor = absoluteTimeout ? (+due - scheduler.now()) : Math.abs(due);
+        return source.lift(new TimeoutWithOperator(waitFor, absoluteTimeout, withObservable, scheduler));
+    };
+}
+var TimeoutWithOperator = /*@__PURE__*/ (func

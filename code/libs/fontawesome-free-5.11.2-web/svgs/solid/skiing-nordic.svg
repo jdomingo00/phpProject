@@ -1,0 +1,33 @@
+/**
+ * Karma middleware is responsible for serving:
+ * - client.html (the entrypoint for capturing a browser)
+ * - debug.html
+ * - context.html (the execution context, loaded within an iframe)
+ * - karma.js
+ *
+ * The main part is generating context.html, as it contains:
+ * - generating mappings
+ * - including <script> and <link> tags
+ * - setting propert caching headers
+ */
+
+const path = require('path')
+const url = require('url')
+const helper = require('../helper')
+
+const log = require('../logger').create('middleware:karma')
+const stripHost = require('./strip_host').stripHost
+const common = require('./common')
+
+const VERSION = require('../constants').VERSION
+const SCRIPT_TYPE = {
+  'js': 'text/javascript',
+  'dart': 'application/dart',
+  'module': 'module'
+}
+const FILE_TYPES = [
+  'css',
+  'html',
+  'js',
+  'dart',
+  'module',

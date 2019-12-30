@@ -1,0 +1,18 @@
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+"use strict";
+
+const Module = require("../Module");
+const Template = require("../Template");
+const Parser = require("../Parser");
+const eslintScope = require("eslint-scope");
+const { ConcatSource, ReplaceSource } = require("webpack-sources");
+const DependencyReference = require("../dependencies/DependencyReference");
+const HarmonyImportDependency = require("../dependencies/HarmonyImportDependency");
+const HarmonyImportSideEffectDependency = require("../dependencies/HarmonyImportSideEffectDependency");
+const HarmonyImportSpecifierDependency = require("../dependencies/HarmonyImportSpecifierDependency");
+const HarmonyExportSpecifierDependency = require("../dependencies/HarmonyExportSpecifierDependency");
+const HarmonyExportExpressionDependency = require("../dependencies/HarmonyExportExpressionDependency");
+const HarmonyExportImportedSpecifierDependency = require("../dependencies/HarmonyExportIm

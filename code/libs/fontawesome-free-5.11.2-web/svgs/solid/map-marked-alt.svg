@@ -1,0 +1,35 @@
+ string;
+        }[];
+    };
+    "typeof-compare": boolean;
+    "unified-signatures": boolean;
+    "use-isnan": boolean;
+    "variable-name": {
+        options: string[];
+    };
+    whitespace: {
+        options: string[];
+    };
+};
+export declare const jsRules: {
+    align: {
+        options: string[];
+    };
+    "class-name": boolean;
+    curly: boolean;
+    eofline: boolean;
+    forin: boolean;
+    "import-spacing": boolean;
+    indent: {
+        options: string[];
+    };
+    "jsdoc-format": boolean;
+    "label-position": boolean;
+    "max-line-length": {
+        options: number[];
+    };
+    "new-parens": boolean;
+    "no-arg": boolean;
+    "no-bitwise": boolean;
+    "no-conditional-assignment": boolean;
+    "no

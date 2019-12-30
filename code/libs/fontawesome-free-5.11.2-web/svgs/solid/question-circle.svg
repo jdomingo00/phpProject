@@ -1,0 +1,5 @@
+/issues/3102)) ([11e3a9d](https://github.com/karma-runner/karma/commit/11e3a9d)), closes [#2927](https://github.com/karma-runner/karma/issues/2927)
+* **config:** add support for ES modules ([e811adb](https://github.com/karma-runner/karma/commit/e811adb))
+* **frameworks:** report start() errors back to server. ([#3126](https://github.com/karma-runner/karma/issues/3126)) ([8257375](https://github.com/karma-runner/karma/commit/8257375))
+* **server:** .dom files include HTML tags in page. ([#3178](https://github.com/karma-runner/karma/issues/3178)) ([4651524](https://github.com/karma-runner/karma/commit/4651524))
+* **server:** Add public API to force a file refresh ([dab8a82](https://github.com/ka
