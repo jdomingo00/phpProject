@@ -1,0 +1,20 @@
+onTransform) {
+    const { config, workspace } = await buildBrowserWebpackConfigFromContext(options, context, host);
+    let transformedConfig;
+    if (webpackConfigurationTransform) {
+        transformedConfig = [];
+        for (const c of config) {
+            transformedConfig.push(await webpackConfigurationTransform(c));
+        }
+    }
+    if (options.deleteOutputPath) {
+        await utils_1.deleteOutputDir(core_1.normalize(context.workspaceRoot), core_1.normalize(options.outputPath), host).toPromise();
+    }
+    return { config: transformedConfig || config, workspace };
+}
+// tslint:disable-next-line: no-big-function
+function buildWebpackBrowser(options, context, transforms = {}) {
+    const host = new node_1.NodeJsSyncHost();
+    const root = core_1.normalize(context.workspaceRoot);
+    // Check Angular version.
+    version_1.assertCompatibleAngularVersion(context.workspaceRoot, context.logg

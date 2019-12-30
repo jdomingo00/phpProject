@@ -1,0 +1,27 @@
+mp dependencies versions
+
+# 2.2.3
+
+Ensure that colors are always enabled. [#36](https://github.com/bcaudan/jasmine-spec-reporter/issues/36)
+
+# 2.2.2
+
+## Bugfix
+
+* Fixes All specs displayed when using `fdescribe` and `fit`. [#37](https://github.com/bcaudan/jasmine-spec-reporter/issues/37)
+
+# 2.2.1
+
+## Bugfix
+
+* Disabled specs was incorrectly reported as failed. [#28](https://github.com/bcaudan/jasmine-spec-reporter/issues/28)
+
+## Other
+
+* Tests: Use jasmine env instead of fake env [#25](https://github.com/bcaudan/jasmine-spec-reporter/issues/25)
+
+# 2.2.0
+
+## Feature
+
+* **stacktrace**: `displayStacktrace` option has now 4 modes availabl

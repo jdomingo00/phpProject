@@ -1,0 +1,53 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var _a, _b, _c;
+var rules_1 = require("tslint/lib/rules");
+var utils_1 = require("tslint/lib/utils");
+var ngWalker_1 = require("./angular/ngWalker");
+var basicTemplateAstVisitor_1 = require("./angular/templates/basicTemplateAstVisitor");
+var isChildNodeOf_1 = require("./util/isChildNodeOf");
+var objectKeys_1 = require("./util/objectKeys");
+var OPTION_CONTROL_COMPONENTS = 'controlComponents';
+var OPTION_LABEL_ATTRIBUTES = 'labelAttributes';
+var OPTION_LABEL_COMPONENTS = 'labelComponents';
+var OPTION_SCHEMA_VALUE = {
+    properties: {
+        items: {
+            type: 'string'
+        },
+        type: 'array',
+        uniqueItems: true
+    },
+    type: 'object'
+};
+var DEFAULT_CONTROL_COMPONENTS = ['button', 'input', 'meter', 'output', 'progress', 'select', 'textarea'];
+var DEFAULT_LABEL_ATTRIBUTES = ['for', 'htmlFor'];
+var DEFAULT_LABEL_COMPONENTS = ['label'];
+var getReadableItems = function (items) {
+    var itemsLength = items.length;
+    if (itemsLength === 1)
+        return "\"" + items[0] + "\"";
+    return items
+        .map(function (x) { return "\"" + x + "\""; })
+        .slice(0, itemsLength - 1)
+        .join(', ') + " and \"" + items.slice().pop() + "\"";
+};
+var Rule = (function (_super) {
+   

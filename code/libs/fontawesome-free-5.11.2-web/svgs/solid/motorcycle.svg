@@ -1,0 +1,36 @@
+S-gevent fork](https://github.com/njoyce/sockjs-gevent))
+  * [pyramid-SockJS](https://github.com/fafhrd91/pyramid_sockjs)
+  * [wildcloud-websockets](https://github.com/wildcloud/wildcloud-websockets)
+  * [wai-SockJS](https://github.com/Palmik/wai-sockjs)
+  * [SockJS-perl](https://github.com/vti/sockjs-perl)
+  * [SockJS-go](https://github.com/igm/sockjs-go/)
+
+Getting Started
+-------
+
+SockJS mimics the [WebSockets API](https://www.w3.org/TR/websockets/),
+but instead of `WebSocket` there is a `SockJS` Javascript object.
+
+First, you need to load the SockJS JavaScript library. For example, you can
+put that in your HTML head:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+```
+
+After the script is loaded you can establish a connection with the
+SockJS server. Here's a simple example:
+
+```javascript
+ var sock = new SockJS('https://mydomain.com/my_prefix');
+ sock.onopen = function() {
+     console.log('open');
+     sock.send('test');
+ };
+
+ sock.onmessage = function(e) {
+     console.log('message', e.data);
+     sock.close();
+ };
+
+ sock

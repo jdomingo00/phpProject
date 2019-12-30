@@ -1,0 +1,19 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const AdmZip = require("adm-zip");
+const child_process = require("child_process");
+const fs = require("fs");
+const minimist = require("minimist");
+const path = require("path");
+const q = require("q");
+const rimraf = require("rimraf");
+const binaries_1 = require("../binaries");
+const cli_1 = require("../cli");
+const config_1 = require("../config");
+const files_1 = require("../files");
+const http_utils_1 = require("../http_utils");
+const utils_1 = require("../utils");
+const Opt = require("./");
+const initialize_1 = require("./initialize");
+const opts_1 = require("./opts");
+config_1.Config.runCommand

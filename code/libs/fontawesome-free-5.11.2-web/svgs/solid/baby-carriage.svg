@@ -1,0 +1,21 @@
+ss');
+        try {
+            // tslint:disable-next-line:no-implicit-dependencies
+            fiber = require('fibers');
+        }
+        catch (_b) { }
+    }
+    // set base rules to derive final rules from
+    const baseRules = [
+        { test: /\.css$/, use: [] },
+        {
+            test: /\.scss$|\.sass$/,
+            use: [
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        implementation: sassImplementation,
+                        fiber,
+                        sourceMap: cssSourceMap,
+                        // bootstrap-sass requires a minimum precision of 8
+        

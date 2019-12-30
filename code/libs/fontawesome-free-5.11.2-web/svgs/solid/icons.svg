@@ -1,0 +1,50 @@
+/,
+      loader: 'style-loader!css-loader!stylus-loader',
+    },
+  ],
+},
+plugins: [
+  new webpack.LoaderOptionsPlugin({
+    test: /\.styl$/,
+    stylus: {
+      // You can have multiple stylus configs with other names and use them
+      // with `stylus-loader?config=otherConfig`.
+      default: {
+        use: [stylus_plugin()],
+      },
+      otherConfig: {
+        use: [other_plugin()],
+      },
+    },
+  }),
+],
+```
+
+Config through `stylus-loader`'s OptionsPlugin (convenience wrapper for LoaderOptionsPlugin):
+
+```js
+plugins: [
+  new stylusLoader.OptionsPlugin({
+    default: {
+      use: [stylus_plugin()],
+    },
+  }),
+],
+```
+
+#### Using nib with stylus
+
+The easiest way of enabling `nib` is to import it in the stylus options:
+
+```js
+stylus: {
+  use: [require('nib')()],
+  import: ['~nib/lib/nib/index.styl']
+}
+```
+
+where `~` resolves to `node_modules/`
+
+### Prefer webpack resolving
+
+`stylus-loader` currently prefers resolving paths with stylus's resovling utilities and then falling back to webpack when it can't find files. Use the `preferPathResolver` option with the value `'webpack'` to swap this. This has the be

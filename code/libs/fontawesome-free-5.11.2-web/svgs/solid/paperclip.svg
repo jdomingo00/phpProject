@@ -1,0 +1,26 @@
+sed on sauceSeleniumAddress and sauceSeleniumUseHttp (#4793)
+
+
+- ([6290f27](https://github.com/angular/protractor/commit/6290f27720816dd574ff7a1eccfec6ade1539b71))
+  fix(generate-docs): fix generate-docs.sh. (#4765)
+
+  Ignore generated unstaged files before checking out to new branch; otherwise, the git checkout
+  will fail.
+
+## Dependencies
+
+- ([948c7f2](https://github.com/angular/protractor/commit/948c7f267feebfd4c6997d8bc02485b573100197))
+  fix(deps): Update saucelabs for security issue. (#4805)
+
+
+# 5.3.1
+
+## Features
+
+- ([cc2234c](https://github.com/angular/protractor/commit/cc2234c762268acab85b6e5d1c13b6480738651b))
+  feat(logger): Add log level configuration (#1451) (#4068)
+
+## Fixes
+
+- ([c63b99e](https://github.com/angular/protractor/commit/c63b99ee029b6730e4b0702ac7c22b4076049e2a))
+  fix(grep): change excluded tests to disabled instead of pending

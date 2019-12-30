@@ -1,0 +1,5 @@
+Arguments: 
+  /home/nicolo/.nvm/versions/node/v11.14.0/bin/node /usr/share/yarn/bin/yarn.js install --mutex network:42424 --non-interactive --no-lockfile
+
+PATH: 
+  /home/nicolo/Documenti/dev/babel/babel/packages/babel-preset-env/node_modules/.bin:/home/nicolo/Documenti/dev/babel/babel/packages/node_modules/.bin:/home/nicolo/Documenti/dev/babel/babel/node_modules/.bin:/home/nicolo/Documenti/dev/babel/node_modules/.bin:/home/nicolo/Documenti/dev/node_modules/.bin:/home/nicolo/Documenti/node_modules/.bin:/home/nicolo/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/home/nicolo/.nvm/versions/node/v11.14.0/bin:/tmp/yarn--1561643090353-0.782220323203699:/home/nicolo/Documenti/dev/babel/babel/node_modules/.bin:/home/nicolo/.config/yarn/link/node_modules/.bin:/home/nicolo/.yarn/bin:/home/nicolo/.nvm/versions/node/v11.14.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/nicolo/.nvm/ver

@@ -1,0 +1,24 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.validate = validate;
+
+var _plugin = _interopRequireDefault(require("../plugin"));
+
+var _removed = _interopRequireDefault(require("./removed"));
+
+var _optionAssertions = require("./option-assertions");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const ROOT_VALIDATORS = {
+  cwd: _optionAssertions.assertString,
+  root: _optionAssertions.assertString,
+  rootMode: _optionAssertions.assertRootMode,
+  configFile: _optionAssertions.assertConfigFileSearch,
+  caller: _optionAssertions.assertCallerMetadata,
+  filename: _optionAssertions.assertString,
+  filenameRelative: _optionAssertions.assertString,
+  c
