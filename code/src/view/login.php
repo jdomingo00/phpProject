@@ -55,9 +55,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/SessionController
             </div>
             <button id="buttonlogintoregister" name="login" type="submit">Login</button>
         </form>
-        <div id="footer-box">
-
-        </div>
     </div>
     <div class="footer">
         <span>Hello, I'm a footer!</span>

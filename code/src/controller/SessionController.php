@@ -34,7 +34,10 @@
         //     }
         //     return $result;
         // }
-
+        public function registerP($uname, $password, $fullname, $dni, $fecNacimiento, $mutua) {
+            $result = User::registerP($uname, $password, $fullname, $dni, $fecNacimiento, $mutua);
+            return $result;
+        }
         public function checkSessionStarted() {
             if(isset($_COOKIE['PHPSESSID'])) {
                 session_start();

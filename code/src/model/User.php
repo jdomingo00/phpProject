@@ -81,6 +81,22 @@
             $this->lastlogout = date('Y-m-d');
             return $result;
         }
+        public static function registerP($uname, $password, $fullname, $dni, $fecNacimiento, $mutua) {
+            $dbconnection = new DBConnection();
+            $values = array(
+                'uname' => $uname,
+                'password' => $password,
+                'fullname' => $fullname,
+                'signindate' => date('Y-m-d'),
+                'lastlogin' => '',
+                'lastlogout' => '',
+                'type' => 'p',
+                'dni' => $dni,
+                'fecnacimiento' => $fecNacimiento,
+                'mutua' => $mutua
+            );
+            return $dbconnection->executeInsert('pacientes', $values);
+        }
         // public static function registerClient($uname, $passwd, $name, $surname1, $surname2, $dni, $address, $city, $postalCode) {
         //     $dbconnection = new DBConnection();
         //     $rand = rand ( 1 , 4 );

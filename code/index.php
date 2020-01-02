@@ -19,6 +19,22 @@
         <a class="button" href="#">Inicio</a>
         <?php 
             if ($sessionctrl->checkSessionStarted()) {
+                //MENU ADMINS
+                if ($_SESSION['type']=='a') {
+                    echo '<div class="menu-content dropdown">
+                            <div class="button">Registrar</div>
+                            <div class="dropdown-content">
+                                <a class="dropdown-button" href="src/view/regpaciente.php">Paciente</a>
+                                <a class="dropdown-button" href="src/view/regmedico.php">Médico</a>
+                            </div>
+                    </div>';
+                }
+                //MENU PACIENTES
+                if ($_SESSION['type']=='p') {
+                }
+                //MENU MEDICOS
+                if ($_SESSION['type']=='m') {
+                }
                 echo '<a class="button" href="src/view/logout.php">Logout</a>';
             } else {
                 echo '<a class="button" href="src/view/login.php">Login</a>';
