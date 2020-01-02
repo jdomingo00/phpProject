@@ -12,7 +12,7 @@
     }
     $rcorrect = true;
     if (isset($_POST['registrar'])) {
-        $rcorrect = $sessionctrl->registerP($_POST['uname'], $_POST['password'], $_POST['fullName'], $_POST['dni'], $_POST['fecNacimiento'], $_POST['mutua']);
+        $rcorrect = $sessionctrl->registerM($_POST['uname'], $_POST['password'], $_POST['fullName'], $_POST['numcolegiado'], $_POST['departamento']);
         if($rcorrect) {
             header('Location:../../index.php');
             exit();
@@ -40,8 +40,8 @@
                 echo '<div class="menu-content dropdown">
                         <div class="button">Registrar</div>
                         <div class="dropdown-content">
-                            <a class="dropdown-button" href="#">Paciente</a>
-                            <a class="dropdown-button" href="./regmedico.php">Médico</a>
+                            <a class="dropdown-button" href="./regpaciente.php">Paciente</a>
+                            <a class="dropdown-button" href="#">Médico</a>
                             <a class="dropdown-button" href="./regadmin.php">Administrador</a>
                         </div>
                 </div>';
@@ -50,7 +50,7 @@
         ?>
     </div>
     <div class="body">
-        <form action="./regpaciente.php" method="post">
+        <form action="./regmedico.php" method="post">
             <div class="group form-group">
                 <input class="inputMaterial" type="text" name="uname" required>
                 <span class="highlight"></span>
@@ -70,24 +70,25 @@
                 <label>Nombre completo</label>
             </div>
             <div class="group form-group">
-                <input class="inputMaterial" type="text" name="dni" required>
+                <input class="inputMaterial" type="text" name="numcolegiado" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>DNI</label>
+                <label>Número de colegiado</label>
             </div>
             <div class="group form-group">
-                <?php
-                    echo '<input class="inputMaterial" type="date" name="fecNacimiento" required min="1900-01-01" max="'. date('Y-m-d') .'">'
-                ?>
+                <select class="inputMaterial" name="departamento" required>
+                    <option value=""></option>
+                    <?php
+                        $departamentos = $sessionctrl->getDepartamentosList();
+                        $q = count($departamentos)/2;
+                        for ($i = 0; $i<$q; $i++) {
+                            echo '<option value="'.$departamentos['id'.$i.''].'">'.$departamentos['nombre'.$i.''].'</option>';
+                        }
+                    ?>
+                </select>
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>Fecha de nacimiento</label>
-            </div>
-            <div class="group form-group">
-                <input class="inputMaterial" type="text" name="mutua" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Mutua</label>
+                <label>Departamento</label>
             </div>
             <div class="form-group-buttons">
                 <button class="form-button" type="submit" name="registrar">Registrar</button>

@@ -1,5 +1,6 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/User.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Departamento.php');
 
     class SessionController {
         
@@ -20,7 +21,14 @@
             }
             return 0;
         }
-
+        public function getDepartamentosList() {
+            $dep = Departamento::getAll();
+            return $dep;
+        }
+        // public function getDepartamentosRows() {
+        //     $q = Departamento::getQuantity();
+        //     return $q;
+        // }
         // public function register($uname, $passwd, $name, $surname1, $surname2, $dni, $address, $city, $postalCode) {
         //     $result = Client::registerClient($uname, $passwd, $name, $surname1, $surname2, $dni, $address, $city, $postalCode);
         //     if($result) {
@@ -36,6 +44,10 @@
         // }
         public function registerP($uname, $password, $fullname, $dni, $fecNacimiento, $mutua) {
             $result = User::registerP($uname, $password, $fullname, $dni, $fecNacimiento, $mutua);
+            return $result;
+        }
+        public function registerM($uname, $password, $fullname, $numcolegiado, $departamento) {
+            $result = User::registerM($uname, $password, $fullname, $numcolegiado, $departamento);
             return $result;
         }
         public function checkSessionStarted() {
