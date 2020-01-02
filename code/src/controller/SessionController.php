@@ -8,13 +8,15 @@
 
             $user = new User();
             if($user->checkLoginData($uname, $passwd)) {
-                session_start();
-
-                $_SESSION['uname'] = $user->getUsername();
-                $_SESSION['fullname'] = $user->getFullName();
-                $_SESSION['type'] = $type;
-
-                return 1;
+                $rtn = $user->updateLoginDate($uname);
+                if ($rtn) {
+                    session_start();
+                    $_SESSION['uname'] = $user->getUsername();
+                    $_SESSION['fullname'] = $user->getFullName();
+                    $_SESSION['type'] = $user->getType();
+                    return 1;
+                }
+                return 2;
             }
             return 0;
         }
@@ -43,7 +45,8 @@
 
         public function logout() {
             if(!isset($_COOKIE['PHPSESSID'])) return;
-
+            $user = new User();
+            $rtn = $user->updateLogoutDate($_SESSION['uname']);
             session_unset();
             session_destroy();
             setcookie('PHPSESSID', '', time() - 60, '/');

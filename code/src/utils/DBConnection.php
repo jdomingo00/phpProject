@@ -26,7 +26,14 @@
                 return $result;
             }
         }
-
+        public function executeQuery($query) {
+            $result = pg_query($this->dbconnection, $query);
+            if(!$result) {
+                error_log("DB update error: " + pg_last_error());
+                return false;
+            }
+            return true;
+        }
         public function executeInsert($table, $values) {
             $result = pg_insert($this->dbconnection, $table, $values);
             if(!$result) {
