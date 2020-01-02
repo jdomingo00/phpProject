@@ -65,6 +65,22 @@
             $this->lastlogout = $datamap['lastlogout'];
             $this->type = $datamap['type'];
         }
+        public function updateLoginDate($uname) {
+            $dbconnection = new DBConnection();
+
+            $query = "UPDATE users SET lastlogin='". date('Y-m-d') . "' WHERE uname='" . $uname . "';";
+            $result = $dbconnection->executeQuery($query);
+            $this->lastlogin = date('Y-m-d');
+            return $result;
+        }
+        public function updateLogoutDate($uname) {
+            $dbconnection = new DBConnection();
+
+            $query = "UPDATE users SET lastlogout='". date('Y-m-d') . "' WHERE uname='" . $uname . "';";
+            $result = $dbconnection->executeQuery($query);
+            $this->lastlogout = date('Y-m-d');
+            return $result;
+        }
         // public static function registerClient($uname, $passwd, $name, $surname1, $surname2, $dni, $address, $city, $postalCode) {
         //     $dbconnection = new DBConnection();
         //     $rand = rand ( 1 , 4 );
