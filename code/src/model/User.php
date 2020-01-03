@@ -112,6 +112,22 @@
             );
             return $dbconnection->executeInsert('medicos', $values);
         }
+        public static function registerA($uname, $password, $fullname, $dni, $horaInicio, $horaFinal) {
+            $dbconnection = new DBConnection();
+            $values = array(
+                'uname' => $uname,
+                'password' => $password,
+                'fullname' => $fullname,
+                'signindate' => date('Y-m-d'),
+                'lastlogin' => '',
+                'lastlogout' => '',
+                'type' => 'a',
+                'dni' => $dni,
+                'horainicio' => $horaInicio,
+                'horafinal' => $horaFinal
+            );
+            return $dbconnection->executeInsert('administradores', $values);
+        }
         // public static function registerClient($uname, $passwd, $name, $surname1, $surname2, $dni, $address, $city, $postalCode) {
         //     $dbconnection = new DBConnection();
         //     $rand = rand ( 1 , 4 );

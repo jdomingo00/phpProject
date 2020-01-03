@@ -26,6 +26,7 @@
                             <div class="dropdown-content">
                                 <a class="dropdown-button" href="src/view/regpaciente.php">Paciente</a>
                                 <a class="dropdown-button" href="src/view/regmedico.php">Médico</a>
+                                <a class="dropdown-button" href="src/view/regadmin.php">Administrador</a>
                             </div>
                     </div>';
                 }
