@@ -50,6 +50,10 @@
             $result = User::registerM($uname, $password, $fullname, $numcolegiado, $departamento);
             return $result;
         }
+        public function registerA($uname, $password, $fullname, $dni, $horaInicio, $horaFinal) {
+            $result = User::registerA($uname, $password, $fullname, $dni, $horaInicio, $horaFinal);
+            return $result;
+        }
         public function checkSessionStarted() {
             if(isset($_COOKIE['PHPSESSID'])) {
                 session_start();
