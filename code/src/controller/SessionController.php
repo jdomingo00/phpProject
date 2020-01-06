@@ -46,8 +46,8 @@
             $result = User::registerP($uname, $password, $fullname, $dni, $fecNacimiento, $mutua);
             return $result;
         }
-        public function registerM($uname, $password, $fullname, $numcolegiado, $departamento) {
-            $result = User::registerM($uname, $password, $fullname, $numcolegiado, $departamento);
+        public function registerM($uname, $password, $fullname, $numcolegiado, $departamento, $tlunes, $tmartes, $tmiercoles, $tjueves, $tviernes, $tsabado, $tdomingo) {
+            $result = User::registerM($uname, $password, $fullname, $numcolegiado, $departamento, $tlunes, $tmartes, $tmiercoles, $tjueves, $tviernes, $tsabado, $tdomingo);
             return $result;
         }
         public function registerA($uname, $password, $fullname, $dni, $horaInicio, $horaFinal) {

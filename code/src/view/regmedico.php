@@ -12,7 +12,7 @@
     }
     $rcorrect = true;
     if (isset($_POST['registrar'])) {
-        $rcorrect = $sessionctrl->registerM($_POST['uname'], $_POST['password'], $_POST['fullName'], $_POST['numcolegiado'], $_POST['departamento']);
+        $rcorrect = $sessionctrl->registerM($_POST['uname'], $_POST['password'], $_POST['fullName'], $_POST['numcolegiado'], $_POST['departamento'], $_POST['tlunes'], $_POST['tmartes'], $_POST['tmiercoles'], $_POST['tjueves'], $_POST['tviernes'], $_POST['tsabado'], $_POST['tdomingo'],);
         if($rcorrect) {
             header('Location:../../index.php');
             exit();
@@ -89,6 +89,40 @@
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Departamento</label>
+            </div>
+            <div class="group form-group"></div>
+            <div class="group form-group"></div>
+            <div class="group form-group">
+                Días que trabaja
+            </div>
+            <div class="group form-group"></div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tlunes">
+                <label>Lunes</label>
+            </div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tmartes">
+                <label>Martes</label>
+            </div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tmiercoles">
+                <label>Miércoles</label>
+            </div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tjueves">
+                <label>Jueves</label>
+            </div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tviernes">
+                <label>Viernes</label>
+            </div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tsabado">
+                <label>Sábado</label>
+            </div>
+            <div class="group form-group">
+                <input class="inputMaterial" type="checkbox" name="tdomingo">
+                <label>Domingo</label>
             </div>
             <div class="form-group-buttons">
                 <button class="form-button" type="submit" name="registrar">Registrar</button>

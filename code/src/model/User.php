@@ -97,7 +97,7 @@
             );
             return $dbconnection->executeInsert('pacientes', $values);
         }
-        public static function registerM($uname, $password, $fullname, $numcolegiado, $departamento) {
+        public static function registerM($uname, $password, $fullname, $numcolegiado, $departamento, $tlunes, $tmartes, $tmiercoles, $tjueves, $tviernes, $tsabado, $tdomingo) {
             $dbconnection = new DBConnection();
             $values = array(
                 'uname' => $uname,
@@ -110,7 +110,73 @@
                 'numcolegiado' => $numcolegiado,
                 'departamento' => $departamento
             );
-            return $dbconnection->executeInsert('medicos', $values);
+            $rtn = $dbconnection->executeInsert('medicos', $values);
+            if ($rtn) {
+                if (isset($tlunes)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'lunes',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn1 = $dbconnection->executeInsert('horario', $horario);
+                }
+                if (isset($tmartes)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'martes',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn2 = $dbconnection->executeInsert('horario', $horario);
+                }
+                if (isset($tmiercoles)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'miercoles',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn3 = $dbconnection->executeInsert('horario', $horario);
+                }
+                if (isset($tjueves)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'jueves',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn4 = $dbconnection->executeInsert('horario', $horario);
+                }
+                if (isset($tviernes)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'viernes',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn5 = $dbconnection->executeInsert('horario', $horario);
+                }
+                    if (isset($tsabado)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'sabado',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn6 = $dbconnection->executeInsert('horario', $horario);
+                }
+                    if (isset($tdomingo)) {
+                    $horario = array(
+                        'medico' => $numcolegiado,
+                        'dia' => 'domingo',
+                        'horaentrada' => '08:00',
+                        'horasalida' => '14:00'
+                    );
+                    $rtn7 = $dbconnection->executeInsert('horario', $horario);
+                }
+            }   
+            return $rtn;
         }
         public static function registerA($uname, $password, $fullname, $dni, $horaInicio, $horaFinal) {
             $dbconnection = new DBConnection();
