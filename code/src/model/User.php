@@ -115,7 +115,7 @@
                 if (isset($tlunes)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'lunes',
+                        'dia' => 'Lunes',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );
@@ -124,7 +124,7 @@
                 if (isset($tmartes)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'martes',
+                        'dia' => 'Martes',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );
@@ -133,7 +133,7 @@
                 if (isset($tmiercoles)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'miercoles',
+                        'dia' => 'Miercoles',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );
@@ -142,7 +142,7 @@
                 if (isset($tjueves)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'jueves',
+                        'dia' => 'Jueves',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );
@@ -151,7 +151,7 @@
                 if (isset($tviernes)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'viernes',
+                        'dia' => 'Viernes',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );
@@ -160,7 +160,7 @@
                     if (isset($tsabado)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'sabado',
+                        'dia' => 'Sabado',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );
@@ -169,7 +169,7 @@
                     if (isset($tdomingo)) {
                     $horario = array(
                         'medico' => $numcolegiado,
-                        'dia' => 'domingo',
+                        'dia' => 'Domingo',
                         'horaentrada' => '08:00',
                         'horasalida' => '14:00'
                     );

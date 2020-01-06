@@ -52,7 +52,7 @@ CREATE TABLE historialMedico (
 	paciente VARCHAR(10),
 	fecha DATE,
 	hora VARCHAR(10),
-	descripcion DESCRIPTION,
+	descripcion TEXT,
 	PRIMARY KEY(paciente, fecha, hora),
 	FOREIGN KEY(paciente) REFERENCES pacientes (dni)
 );
@@ -62,7 +62,7 @@ CREATE TABLE horasAsignadas(
 	hora VARCHAR(10),
 	medico VARCHAR(10),
 	paciente VARCHAR(10),
-	estado VARCHAR(10)
+	estado VARCHAR(10),
 	PRIMARY KEY(fecha, hora, medico),
 	FOREIGN KEY(medico) REFERENCES medicos(numColegiado),
 	FOREIGN KEY(paciente) REFERENCES pacientes (dni)
