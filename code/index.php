@@ -29,6 +29,7 @@
                                 <a class="dropdown-button" href="src/view/regadmin.php">Administrador</a>
                             </div>
                     </div>';
+                    echo '<a class="button" href="src/view/listadomedicos.php">Médicos</a>';
                 }
                 //MENU PACIENTES
                 if ($_SESSION['type']=='p') {

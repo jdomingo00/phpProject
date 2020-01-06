@@ -45,6 +45,7 @@
                             <a class="dropdown-button" href="#">Administrador</a>
                         </div>
                 </div>';
+                echo '<a class="button" href="listadomedicos.php">Médicos</a>';
             }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
