@@ -4,6 +4,7 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Horario.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/HoraAsignada.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Departamento.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Paciente.php');
 
     class MedicosController {
         public function getMedicosByDepartamentoId($id) {
@@ -23,6 +24,10 @@
         public function getHorasVisitaByMedico($medico) {
             $horas = HoraAsignada::getHorasVisita($medico);
             return $horas;
+        }
+        public function getPacientesDNIList() {
+            $pacientes = Paciente::getAll();
+            return $pacientes;
         }
     }
 

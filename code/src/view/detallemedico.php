@@ -73,12 +73,28 @@
                     <span class="bar"></span>
                     <label>Hora</label>
                 </div>
-                <div class="group form-group">
+                <!-- <div class="group form-group">
                     <input class="inputMaterial" type="text" name="paciente">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Paciente</label>
+                </div> -->
+
+                <div class="group form-group">
+                    <select class="inputMaterial" name="paciente">
+                        <option value=""></option>
+                        <?php
+                            $pacientes = $medicosctrl->getPacientesDNIList();
+                            foreach ($pacientes as $paciente) {
+                                 echo '<option value="'.$paciente->getDNI().'">'.$paciente->getDNI().'</option>';
+                            }
+                        ?>
+                    </select>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Paciente</label>
                 </div>
+
                 <div class="form-group-buttons">
                 <button class="form-button" type="submit" name="asignar">Asignar</button>
             </div>
@@ -93,8 +109,9 @@
                                 Paciente: '. $hora->getPaciente().'
                                 Hora: '. $hora->getHora().' 
                                 Estado: '. $hora->getEstado().'';
+                            echo '<button type="submit" name="modificar" value="'.$hora->getFecha().' '.$hora->getHora().'">Modificar</button>';
                         if ($hora->getEstado()!='Cancelada') {
-                            echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar hora</button>';
+                            echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
                         }
                         echo '</li>';
                     }
