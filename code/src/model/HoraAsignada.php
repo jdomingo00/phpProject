@@ -68,5 +68,30 @@
             }
             return $horas;
         }
+        public function cancelHoraVisita($fecha, $hora, $medico) {
+            $dbconnection = new DBConnection();
+            $condition = array(
+                'fecha' => $fecha,
+                'hora' => $hora,
+                'medico' => $medico
+            );
+            $result = $dbconnection->executeDelete('horasasignadas', $condition);
+            return $result;
+        }
+        public function modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente) {
+            $dbconnection = new DBConnection();
+            $condition = array(
+                'fecha' => $fecha,
+                'hora' => $hora,
+                'medico' => $medico
+            );
+            $values = array(
+                'fecha' => $newfecha,
+                'hora' => $newhora,
+                'paciente' => $newpaciente
+            );
+            $result = $dbconnection->executeUpdate('horasasignadas', $condition, $values);
+            return $result;
+        }
     }
 ?>

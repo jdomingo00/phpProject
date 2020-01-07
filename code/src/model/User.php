@@ -194,24 +194,7 @@
             );
             return $dbconnection->executeInsert('administradores', $values);
         }
-        // public static function registerClient($uname, $passwd, $name, $surname1, $surname2, $dni, $address, $city, $postalCode) {
-        //     $dbconnection = new DBConnection();
-        //     $rand = rand ( 1 , 4 );
-        //     $values = array(
-        //         'uname' => $uname,
-        //         'passwd' => $passwd,
-        //         'name' => $name,
-        //         'surname1' => $surname1,
-        //         'surname2' => $surname2,
-        //         'image' => 'dog'.$rand.'.jpg',
-        //         'dni' => $dni,
-        //         'address' => $address,
-        //         'city' => $city,
-        //         'postalcode' => $postalCode
-        //     );
-        //     return $dbconnection->executeInsert('client', $values);
-        // }
-
+        
         // public static function createClientFromUname($uname) {
         //     $dbconnection = new DBConnection();
 

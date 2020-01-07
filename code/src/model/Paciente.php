@@ -69,6 +69,9 @@
             $this->fecnacimiento = $datamap['fecnacimiento'];
             $this->mutua = $datamap['mutua'];
         }
+        private function loadOnlyDNI($datamap){
+            $this->dni = $datamap['dni'];
+        }
        public function getAll() {
             $dbconnection = new DBConnection();
             $query = 'SELECT dni FROM pacientes';
@@ -82,7 +85,7 @@
                 }
                 foreach($p as $paciente) {
                         $pac = new Paciente;
-                        $pac->loadFromDataMap($paciente);
+                        $pac->loadOnlyDNI($paciente);
                         array_push($return, $pac);
                     }
                return $return;

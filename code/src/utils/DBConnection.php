@@ -59,10 +59,18 @@
             }
             return true;
         }
-        public function deleteUser($table, $values) {
+        public function executeDelete($table, $values) {
             $result = pg_delete($this->dbconnection, $table, $values);
-             if(!$result) {
-                error_log("DB insert error: " + pg_last_error());
+            if(!$result) {
+                error_log("DB delete error: " + pg_last_error());
+                return false;
+            }
+            return true;
+        }
+        public function executeUpdate($table, $condition, $values) {
+            $result = pg_update($this->dbconnection, $table, $values, $condition);
+            if(!$result) {
+                error_log("DB update error: " + pg_last_error());
                 return false;
             }
             return true;

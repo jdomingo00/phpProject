@@ -29,6 +29,20 @@
             $pacientes = Paciente::getAll();
             return $pacientes;
         }
+        public function cancelHoraVisita($fecha, $hora, $medico) {
+            $horas = HoraAsignada::cancelHoraVisita($fecha, $hora, $medico);
+            return $horas;
+        }
+        public function modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente) {
+            $dias = array('','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
+            $dia = $dias[date('N', strtotime($newfecha))];
+            $horarios = Horario::getHorarioByMedicoAndDia($medico, $dia);
+            if (count($horarios)<1){
+                return false;
+            }
+             $horas = HoraAsignada::modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente);
+             return $horas;
+        }
     }
 
 ?>
