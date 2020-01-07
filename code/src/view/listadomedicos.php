@@ -53,10 +53,17 @@
                 if (count($medicos)>0) {
                     echo '<h2>'.$departamentos['nombre'.$i.''].'</h2>';
                     foreach ($medicos as $medico) {
-                        echo '<div>'.
-                                $medico->getFullName().
-                                '<a href="./detallemedico.php?numcolegiado='.$medico->getNumColegiado().'">Ver</a>
-                            </div>';
+                        echo '<a href="./detallemedico.php?numcolegiado='.$medico->getNumColegiado().'">
+                                <div style="padding:2%;background-color: lightgrey; color: black;">
+                                    <div style="width:48%;float:left;">'.
+                                    $medico->getFullName().
+                                    '</div>
+                                    <div style="width:48%; float:left;">
+                                        Número de colegiado: '.$medico->getNumColegiado().
+                                    '</div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </a>';
                     }
                 }
             }
