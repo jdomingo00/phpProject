@@ -51,6 +51,10 @@ html {
   color: white;
 }
 
+.button-registrar {
+  margin-bottom: 8%;
+}
+
 .button:hover {
   background-color: #005047;
 }
@@ -170,6 +174,12 @@ html {
   width: 300px;
   border: none;
   border-bottom: 1px solid #757575;
+}
+
+.inputMaterialCheckbox {
+  font-size: 18px;
+  display: block;
+  width: 300px;
 }
 
 .inputMaterialDropdown {
@@ -341,6 +351,12 @@ body {
   float: left;
   width: 31%;
 }
+
+.checkbox-group {
+  float: left;
+  width: 31%;
+}
+
 .form-group-buttons {
   clear: both;
   margin-left: 32%;

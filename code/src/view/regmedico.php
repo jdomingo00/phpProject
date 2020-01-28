@@ -78,7 +78,7 @@
                 <label>Número de colegiado</label>
             </div>
             <div class="group form-group">
-                <select class="inputMaterialDropdown" name="departamento" required>
+                <select class="inputMaterialDropdown inputMaterial" name="departamento" required>
                     <option value=""></option>
                     <?php
                         $departamentos = $sessionctrl->getDepartamentosList();
@@ -93,41 +93,40 @@
                 <label>Departamento</label>
             </div>
             <div class="checkbox-container">
-                <div class="group form-group">
+                <div class="group group-title">
                     Días que trabaja
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tlunes">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tlunes">
                     <label>Lunes</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tmartes">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tmartes">
                     <label>Martes</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tmiercoles">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tmiercoles">
                     <label>Miércoles</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tjueves">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tjueves">
                     <label>Jueves</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tviernes">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tviernes">
                     <label>Viernes</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tsabado">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tsabado">
                     <label>Sábado</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="checkbox" name="tdomingo">
+                <div class="group checkbox-group">
+                    <input class="inputMaterialCheckbox" type="checkbox" name="tdomingo">
                     <label>Domingo</label>
                 </div>
-            </div>
-            
-            <div class="form-group-buttons">
-                <button class="form-button" type="submit" name="registrar">Registrar</button>
+                <div class="form-group-buttons button-registrar">
+                    <button class="form-button" type="submit" name="registrar">Registrar</button>
+                </div>
             </div>
         </form>
     </div>
