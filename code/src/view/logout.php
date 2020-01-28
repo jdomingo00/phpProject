@@ -38,12 +38,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/SessionController
                 <h1 id="logintoregister">Logout</h1>
             </div>
         </div>
-        <div class="group">
+        <div style="margin-top: 45px;" class="group">
             Cerrar la sesión?
         </div>
         <form action="./logout.php" method="post">
-            <button id="buttonlogintoregister" name="response" value="si" type="submit">Si</button>
-            <button id="buttonlogintoregister" name="response" value="no" type="submit">No</button>
+            <button style="margin-bottom: 45px; margin-top: 50px" class="buttonlogintoregister" name="response" value="si" type="submit">Si</button>
+            <button class="buttonlogintoregister" name="response" value="no" type="submit">No</button>
         </form>
     </div>
     <div class="footer">

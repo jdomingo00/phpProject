@@ -44,7 +44,7 @@
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
-    <div class="body">
+    <div class="detall-container">
         <?php
             $departamentos = $sessionctrl->getDepartamentosList();
             $q = count($departamentos)/2;

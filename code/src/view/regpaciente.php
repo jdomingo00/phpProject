@@ -50,7 +50,7 @@
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
-    <div class="body">
+    <div class="form-container">
         <form action="./regpaciente.php" method="post">
             <div class="group form-group">
                 <input class="inputMaterial" type="text" name="uname" required>
@@ -78,7 +78,7 @@
             </div>
             <div class="group form-group">
                 <?php
-                    echo '<input class="inputMaterial" type="date" name="fecNacimiento" required min="1900-01-01" max="'. date('Y-m-d') .'">'
+                    echo '<input onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" class="inputMaterial" type="text" name="fecNacimiento" required min="1900-01-01" max="'. date('Y-m-d') .'">'
                 ?>
                 <span class="highlight"></span>
                 <span class="bar"></span>

@@ -50,7 +50,7 @@
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
-    <div class="body">
+    <div class="form-container">
         <form action="./regadmin.php" method="post">
             <div class="group form-group">
                 <input class="inputMaterial" type="text" name="uname" required>
@@ -77,13 +77,13 @@
                 <label>DNI</label>
             </div>
             <div class="group form-group">
-                <input class="inputMaterial" type="time" name="horaInicio" required min="00:00" max="23:59">
+                <input onfocus="(this.type='time')" onblur="(this.type='text')" class="inputMaterial" type="text" name="horaInicio" required min="00:00" max="23:59">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Hora de inicio</label>
             </div>
             <div class="group form-group">
-                <input class="inputMaterial" type="time" name="horaFinal" required min="00:00" max="23:59">
+                <input onfocus="(this.type='time')" onblur="(this.type='text')" class="inputMaterial" type="text" name="horaFinal" required min="00:00" max="23:59">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Hora de final</label>
