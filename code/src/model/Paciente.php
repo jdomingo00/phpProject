@@ -72,7 +72,7 @@
         private function loadOnlyDNI($datamap){
             $this->dni = $datamap['dni'];
         }
-       public function getAll() {
+        public function getAllDni() {
             $dbconnection = new DBConnection();
             $query = 'SELECT dni FROM pacientes';
             $result = $dbconnection->executeAndReturnQuery($query);
@@ -86,6 +86,26 @@
                 foreach($p as $paciente) {
                         $pac = new Paciente;
                         $pac->loadOnlyDNI($paciente);
+                        array_push($return, $pac);
+                    }
+               return $return;
+            }
+            return array();
+        }
+       public function getAll() {
+            $dbconnection = new DBConnection();
+            $query = 'SELECT * FROM pacientes';
+            $result = $dbconnection->executeAndReturnQuery($query);
+            
+            if($result != null) {
+                $return = array();
+                $p = array();
+                for ($i=0;$i<$dbconnection->getResultNumRow($result);$i++) {
+                    array_push($p, $dbconnection->getResultAsArray($result, $i));
+                }
+                foreach($p as $paciente) {
+                        $pac = new Paciente;
+                        $pac->loadFromDataMap($paciente);
                         array_push($return, $pac);
                     }
                return $return;

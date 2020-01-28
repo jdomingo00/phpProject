@@ -46,6 +46,7 @@
                         </div>
                 </div>';
                 echo '<a class="button" href="listadomedicos.php">Médicos</a>';
+                echo '<a class="button" href="listadopacientes.php">Pacientes</a>';
             }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>

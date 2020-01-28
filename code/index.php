@@ -30,6 +30,7 @@
                             </div>
                     </div>';
                     echo '<a class="button" href="src/view/listadomedicos.php">Médicos</a>';
+                    echo '<a class="button" href="src/view/listadopacientes.php">Pacientes</a>';
                 }
                 //MENU PACIENTES
                 if ($_SESSION['type']=='p') {
