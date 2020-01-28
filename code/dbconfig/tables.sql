@@ -35,9 +35,8 @@ CREATE TABLE medicos(
 CREATE TABLE horario(
 	medico VARCHAR(10),
 	dia VARCHAR(10),
-	horaEntrada VARCHAR(10),
-	horaSalida VARCHAR(10),
-	PRIMARY KEY(medico, dia, horaEntrada, horaSalida),
+	hora VARCHAR(10),
+	PRIMARY KEY(medico, dia, hora),
 	FOREIGN KEY(medico) REFERENCES medicos (numColegiado)
 );
 

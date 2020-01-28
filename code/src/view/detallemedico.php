@@ -60,6 +60,7 @@
                         </div>
                 </div>';
                 echo '<a class="button" href="listadomedicos.php">Médicos</a>';
+                echo '<a class="button" href="listadopacientes.php">Pacientes</a>';
             }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
@@ -71,25 +72,26 @@
             <div>
                 <h2>Asignar horas</h2>
                 <div class="group form-group">
-                    <?php
-                        echo '<input class="inputMaterial" type="date" name="fecha" min="'. date('Y-m-d') .'">';
+                    <?php 
+                        $diaactual = date("Y-m-d");
+                        $diast = $medicosctrl->getDiasVisitaByMedico($_GET['numcolegiado']);
+                        for ($i = 1; $i<=30; $i++) {
+                            $dia = date("Y-m-d",strtotime($diaactual."+ ".$i." days"));
+                            $ndia = $medicosctrl->comprobarDia($dia);
+                                foreach ($diast as $diat) {
+                                    if ($diat == $ndia) {
+                                        echo $ndia.', '.$dia.'        ';
+                                        $horast = $medicosctrl->getHorarioByMedicoAndDia($_GET['numcolegiado'], $ndia);
+                                        foreach($horast as $horat) {
+                                            echo ' '.$horat.' <input type="radio" name="asignahora" value="'.$dia.'?'.$horat.'">';
+                                        }
+                                        echo "<br/>";
+                                    }
+                                }
+                           
+                        }
                     ?>
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label>Fecha</label>
                 </div>
-                <div class="group form-group">
-                    <input class="inputMaterial" type="time" name="hora" min="08:00" max="14:00">
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label>Hora</label>
-                </div>
-                <!-- <div class="group form-group">
-                    <input class="inputMaterial" type="text" name="paciente">
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label>Paciente</label>
-                </div> -->
 
                 <div class="group form-group">
                     <select class="inputMaterial" name="paciente">
@@ -107,8 +109,8 @@
                 </div>
 
                 <div class="form-group-buttons">
-                <button class="form-button" type="submit" name="asignar">Asignar</button>
-            </div>
+                    <button class="form-button" type="submit" name="asignar">Asignar</button>
+                </div>
             </div>
             <ul>
             <?php

@@ -25,8 +25,16 @@
             $horas = HoraAsignada::getHorasVisita($medico);
             return $horas;
         }
+        public function getHorarioByMedicoAndDia($medico, $dia){
+            $horario = Horario::getHorarioByMedicoAndDia($medico, $dia);
+            return $horario;
+        }
+        public function getDiasVisitaByMedico($medico) {
+            $horario = Horario::getDiasVisitaByMedico($medico);
+            return $horario;
+        }
         public function getPacientesDNIList() {
-            $pacientes = Paciente::getAll();
+            $pacientes = Paciente::getAllDni();
             return $pacientes;
         }
         public function cancelHoraVisita($fecha, $hora, $medico) {
@@ -42,6 +50,11 @@
             }
              $horas = HoraAsignada::modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente);
              return $horas;
+        }
+         public function comprobarDia($dia) {
+            $dias = array('','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
+            $ndia = $dias[date('N', strtotime($dia))];
+            return $ndia;
         }
     }
 

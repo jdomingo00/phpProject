@@ -1,8 +1,8 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/SessionController.php');
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/MedicosController.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/PacientesController.php');
     $sessionctrl = new SessionController();
-    $medicosctrl = new MedicosController();
+    $pacientesctrl = new MedicosController();
     if ($sessionctrl->checkSessionStarted()) {
         if ($_SESSION['type']!='a') {
             header('Location:../../index.php');
@@ -24,7 +24,7 @@
 
 <body>
     <div class="header">
-        <span class="title">LISTADO DE MÉDICOS</span>
+        <span class="title">LISTADO DE PACIENTES</span>
     </div>
     <div class="header2">
         <a class="button" href="../../index.php">Inicio</a>
@@ -39,34 +39,27 @@
                             <a class="dropdown-button" href="./regadmin.php">Administrador</a>
                         </div>
                 </div>';
-                echo '<a class="button" href="#">Médicos</a>';
-                echo '<a class="button" href="listadopacientes.php">Pacientes</a>';
+                echo '<a class="button" href="listadomedicos.php">Médicos</a>';
+                echo '<a class="button" href="#">Pacientes</a>';
             }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
-    <div class="detall-container">
+    <div class="body">
         <?php
-            $departamentos = $sessionctrl->getDepartamentosList();
-            $q = count($departamentos)/2;
-            for ($i = 0; $i<$q; $i++) {
-                $medicos = $medicosctrl->getMedicosByDepartamentoId($departamentos['id'.$i.'']);
-                if (count($medicos)>0) {
-                    echo '<h2>'.$departamentos['nombre'.$i.''].'</h2>';
-                    foreach ($medicos as $medico) {
-                        echo '<a href="./detallemedico.php?numcolegiado='.$medico->getNumColegiado().'">
-                                <div style="padding:2%;background-color: lightgrey; color: black;">
-                                    <div style="width:48%;float:left;">'.
-                                    $medico->getFullName().
-                                    '</div>
-                                    <div style="width:48%; float:left;">
-                                        Número de colegiado: '.$medico->getNumColegiado().
-                                    '</div>
-                                    <div style="clear:both;"></div>
-                                </div>
-                            </a>';
-                    }
-                }
+            $pacientes = $pacientesctrl->getAll();
+            foreach ($pacientes as $paciente) {
+                echo '<a href="./detallepaciente.php?dni='.$paciente->getDni().'">
+                        <div style="padding:2%;background-color: lightgrey; color: black;">
+                            <div style="width:48%;float:left;">'.
+                            $paciente->getFullName().
+                            '</div>
+                            <div style="width:48%; float:left;">
+                                DNI: '.$paciente->getDni().
+                            '</div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </a>';
             }
             ?>
     </div>

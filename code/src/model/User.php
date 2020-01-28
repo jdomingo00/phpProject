@@ -113,67 +113,74 @@
             $rtn = $dbconnection->executeInsert('medicos', $values);
             if ($rtn) {
                 if (isset($tlunes)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Lunes',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn1 = $dbconnection->executeInsert('horario', $horario);
+                    for($i=8;$i<14;$i++) {
+                        $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Lunes',
+                            'hora' => $i
+                        );
+                        $rtn1 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
                 if (isset($tmartes)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Martes',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn2 = $dbconnection->executeInsert('horario', $horario);
+                   for($i=8;$i<14;$i++) {
+                        $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Martes',
+                            'hora' => $i
+                        );
+                        $rtn2 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
                 if (isset($tmiercoles)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Miercoles',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn3 = $dbconnection->executeInsert('horario', $horario);
+                   for($i=8;$i<14;$i++) {
+                        $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Miercoles',
+                            'hora' => $i
+                        );
+                        $rtn3 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
                 if (isset($tjueves)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Jueves',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn4 = $dbconnection->executeInsert('horario', $horario);
+                    for($i=8;$i<14;$i++) {
+                       $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Jueves',
+                            'hora' => $i
+                        );
+                        $rtn4 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
                 if (isset($tviernes)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Viernes',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn5 = $dbconnection->executeInsert('horario', $horario);
+                    for($i=8;$i<14;$i++) {
+                        $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Viernes',
+                            'hora' => $i
+                        );
+                        $rtn5 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
-                    if (isset($tsabado)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Sabado',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn6 = $dbconnection->executeInsert('horario', $horario);
+                if (isset($tsabado)) {
+                    for($i=8;$i<14;$i++) {
+                        $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Sabado',
+                            'hora' => $i
+                        );
+                        $rtn6 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
-                    if (isset($tdomingo)) {
-                    $horario = array(
-                        'medico' => $numcolegiado,
-                        'dia' => 'Domingo',
-                        'horaentrada' => '08:00',
-                        'horasalida' => '14:00'
-                    );
-                    $rtn7 = $dbconnection->executeInsert('horario', $horario);
+                if (isset($tdomingo)) {
+                    for($i=8;$i<14;$i++) {
+                        $horario = array(
+                            'medico' => $numcolegiado,
+                            'dia' => 'Domingo',
+                            'hora' => $i
+                        );
+                        $rtn7 = $dbconnection->executeInsert('horario', $horario);
+                    }
                 }
             }   
             return $rtn;
