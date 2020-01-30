@@ -12,6 +12,10 @@
         header('Location:./login.php');
         exit();
     }
+    if (!isset($_GET['dni'])) {
+        header('Location:./listadopacientes.php');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +28,7 @@
 
 <body>
     <div class="header">
-        <span class="title">LISTADO DE PACIENTES</span>
+        <span class="title">PACIENTE Nº <?php echo $_GET['dni']?></span>
     </div>
     <div class="header2">
         <a class="button" href="../../index.php">Inicio</a>
@@ -36,32 +40,14 @@
                         <div class="dropdown-content">
                             <a class="dropdown-button" href="./regpaciente.php">Paciente</a>
                             <a class="dropdown-button" href="./regmedico.php">Médico</a>
-                            <a class="dropdown-button" href="./regadmin.php">Administrador</a>
+                            <a class="dropdown-button" href="#">Administrador</a>
                         </div>
                 </div>';
                 echo '<a class="button" href="listadomedicos.php">Médicos</a>';
-                echo '<a class="button" href="#">Pacientes</a>';
+                echo '<a class="button" href="listadopacientes.php">Pacientes</a>';
             }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
-    </div>
-    <div class="detall-container">
-        <?php
-            $pacientes = $pacientesctrl->getAll();
-            foreach ($pacientes as $paciente) {
-                echo '<a href="./detallepaciente.php?dni='.$paciente->getDni().'">
-                        <div style="padding:2%;background-color: lightgrey; color: black;">
-                            <div style="width:48%;float:left;">'.
-                            $paciente->getFullName().
-                            '</div>
-                            <div style="width:48%; float:left;">
-                                DNI: '.$paciente->getDni().
-                            '</div>
-                            <div style="clear:both;"></div>
-                        </div>
-                    </a>';
-            }
-            ?>
     </div>
     <div class="footer">
         <span>Hello, I'm a footer!</span>

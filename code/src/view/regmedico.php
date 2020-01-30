@@ -30,7 +30,7 @@
 
 <body>
     <div class="header">
-        <span class="title">REGISTRAR PACIENTE</span>
+        <span class="title">REGISTRAR MÉDICO</span>
     </div>
     <div class="header2">
         <a class="button" href="../../index.php">Inicio</a>
