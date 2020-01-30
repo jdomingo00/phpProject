@@ -17,8 +17,9 @@
         exit();
     }
     if (isset($_POST['asignar'])) {
-        if (isset($_POST['fecha'])&&isset($_POST['hora'])&&isset($_POST['paciente'])) {
-            $rtnasign = $medicosctrl->insertNewHoraVisita($_POST['fecha'],$_POST['hora'],$_GET['numcolegiado'],$_POST['paciente']);
+        if (isset($_POST['asignahora'])&&isset($_POST['paciente'])) {
+            $sp = explode('?', $_POST['asignahora']);
+            $rtnasign = $medicosctrl->insertNewHoraVisita($sp[0],$sp[1],$_GET['numcolegiado'],$_POST['paciente']);
         }
     }
     if (isset($_POST['cancelar'])) {
@@ -73,6 +74,7 @@
                 <h2>Asignar horas</h2>
                 <div class="group form-group">
                     <?php 
+                        $horas = $medicosctrl->getHorasVisitaByMedico($_GET['numcolegiado']);
                         $diaactual = date("Y-m-d");
                         $diast = $medicosctrl->getDiasVisitaByMedico($_GET['numcolegiado']);
                         for ($i = 1; $i<=30; $i++) {
@@ -83,6 +85,10 @@
                                         echo $ndia.', '.$dia.'        ';
                                         $horast = $medicosctrl->getHorarioByMedicoAndDia($_GET['numcolegiado'], $ndia);
                                         foreach($horast as $horat) {
+                                            //
+                                            // Aqui pongo lo de filtrar las horas que ya tiene asignadas para que sea disabled y tal
+                                            //
+                                            //
                                             echo ' '.$horat.' <input type="radio" name="asignahora" value="'.$dia.'?'.$horat.'">';
                                         }
                                         echo "<br/>";

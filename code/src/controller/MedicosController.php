@@ -18,6 +18,7 @@
             if (count($horarios)<1){
                 return false;
             }
+            
             $result = HoraAsignada::insertHoraAsignada($fecha, $hora, $medico, $paciente);
             return $result;
         }
