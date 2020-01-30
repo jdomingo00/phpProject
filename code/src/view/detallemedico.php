@@ -74,7 +74,7 @@
                 <h2>Asignar horas</h2>
                 <div class="group form-group">
                     <?php 
-                        $horas = $medicosctrl->getHorasVisitaByMedico($_GET['numcolegiado']);
+                        $horasasignadas = $medicosctrl->getHorasVisitaByMedico($_GET['numcolegiado']);
                         $diaactual = date("Y-m-d");
                         $diast = $medicosctrl->getDiasVisitaByMedico($_GET['numcolegiado']);
                         for ($i = 1; $i<=30; $i++) {
@@ -82,14 +82,25 @@
                             $ndia = $medicosctrl->comprobarDia($dia);
                                 foreach ($diast as $diat) {
                                     if ($diat == $ndia) {
-                                        echo $ndia.', '.$dia.'        ';
+                                        echo '<div class="diadelform">'.$ndia.', '.$dia.'</div> ';
                                         $horast = $medicosctrl->getHorarioByMedicoAndDia($_GET['numcolegiado'], $ndia);
                                         foreach($horast as $horat) {
                                             //
                                             // Aqui pongo lo de filtrar las horas que ya tiene asignadas para que sea disabled y tal
                                             //
                                             //
-                                            echo ' '.$horat.' <input type="radio" name="asignahora" value="'.$dia.'?'.$horat.'">';
+                                            $asignada = false;
+                                            foreach($horasasignadas as $horaasignada) {
+                                                if ($horaasignada->getFecha()==$dia && $horaasignada->getHora()==$horat) {
+                                                    $asignada = true;
+                                                }
+                                            }
+                                            if ($asignada) {
+                                                echo '&nbsp;&nbsp;&nbsp;&nbsp;<span class="disabled">'.$horat.'</span><input type="radio" name="asignahora" value="'.$dia.'?'.$horat.'" disabled>';
+                                            } else {
+                                                echo '&nbsp;&nbsp;&nbsp;&nbsp;<span>'.$horat.'</span><input type="radio" name="asignahora" value="'.$dia.'?'.$horat.'">';
+                                            }
+                                           
                                         }
                                         echo "<br/>";
                                     }

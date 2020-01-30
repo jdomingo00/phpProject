@@ -377,3 +377,14 @@ body {
   width: 100%;
   background-color: #000000;
 }
+
+span.disabled {
+  color: red;
+}
+span.disabled + input {
+  border: none;
+}
+.diadelform {
+  display: run-in;
+  width: 160px;
+}
