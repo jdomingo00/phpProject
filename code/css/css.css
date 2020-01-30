@@ -55,6 +55,10 @@ html {
   margin-bottom: 8%;
 }
 
+.button-asignar {
+  margin-bottom: 3%;
+}
+
 .button:hover {
   background-color: #005047;
 }
@@ -345,6 +349,10 @@ body {
 
 .checkbox-container {
   clear: both;
+}
+
+.visitas-container {
+  margin-bottom: 5%;
 }
 
 .form-group {

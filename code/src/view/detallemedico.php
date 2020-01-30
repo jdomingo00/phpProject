@@ -45,7 +45,7 @@
 
 <body>
     <div class="header">
-        <span class="title">LISTADO DE MÉDICOS</span>
+        <span class="title">MÉDICO Nº <?php echo $_GET['numcolegiado']?></span>
     </div>
     <div class="header2">
         <a class="button" href="../../index.php">Inicio</a>
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="group form-group">
-                    <select class="inputMaterial" name="paciente">
+                    <select class="inputMaterialDropdown inputMaterial" name="paciente">
                         <option value=""></option>
                         <?php
                             $pacientes = $medicosctrl->getPacientesDNIList();
@@ -125,45 +125,47 @@
                     <label>Paciente</label>
                 </div>
 
-                <div class="form-group-buttons">
+                <div class="form-group-buttons button-asignar">
                     <button class="form-button" type="submit" name="asignar">Asignar</button>
                 </div>
             </div>
-            <ul>
-            <?php
-                $horas = $medicosctrl->getHorasVisitaByMedico($_GET['numcolegiado']);
-                if (count($horas)>0) {
-                    foreach ($horas as $hora) {
-                        echo '<li>
-                                Fecha: '. $hora->getFecha().' 
-                                Paciente: '. $hora->getPaciente().'
-                                Hora: '. $hora->getHora().' 
-                                Estado: '. $hora->getEstado().'';
-                            echo '<button type="submit" name="modificar" value="'.$hora->getFecha().' '.$hora->getHora().'">Modificar</button>';
-                        if ($hora->getEstado()!='Cancelada') {
-                            echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
-                        }
-                        echo '</li>';
-                        if (isset($_POST['modificar'])) {
-                            if ($_POST['modificar'] == $hora->getFecha().' '.$hora->getHora()) {
-                                $sep = explode(' ', $_POST['modificar']);
-                                echo '<div>
-                                        Fecha: <input type="date" name="newfecha" value="'.$sep[0].'" min="'. date('Y-m-d') .'">
-                                        Hora: <input type="time" name="newhora" value="'.$sep[1].'" min="08:00" max="14:00">
-                                        Paciente: <select name="newpaciente" value="'.$hora->getPaciente().'">';
-                                            foreach ($pacientes as $paciente) {
-                                                echo '<option value="'.$paciente->getDNI().'">'.$paciente->getDNI().'</option>';
-                                            }
-                                        echo '
-                                        </select>
-                                        <button type="submit" name="update" value="'.$_POST['modificar'].'">Aceptar</button>
-                                    </div>';  
-                            }   
+            <div class="visitas-container">
+                <ul>
+                <?php
+                    $horas = $medicosctrl->getHorasVisitaByMedico($_GET['numcolegiado']);
+                    if (count($horas)>0) {
+                        foreach ($horas as $hora) {
+                            echo '<li>
+                                    Fecha: '. $hora->getFecha().' 
+                                    Paciente: '. $hora->getPaciente().'
+                                    Hora: '. $hora->getHora().' 
+                                    Estado: '. $hora->getEstado().'';
+                                echo '<button type="submit" name="modificar" value="'.$hora->getFecha().' '.$hora->getHora().'">Modificar</button>';
+                            if ($hora->getEstado()!='Cancelada') {
+                                echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
+                            }
+                            echo '</li>';
+                            if (isset($_POST['modificar'])) {
+                                if ($_POST['modificar'] == $hora->getFecha().' '.$hora->getHora()) {
+                                    $sep = explode(' ', $_POST['modificar']);
+                                    echo '<div>
+                                            Fecha: <input type="date" name="newfecha" value="'.$sep[0].'" min="'. date('Y-m-d') .'">
+                                            Hora: <input type="time" name="newhora" value="'.$sep[1].'" min="08:00" max="14:00">
+                                            Paciente: <select name="newpaciente" value="'.$hora->getPaciente().'">';
+                                                foreach ($pacientes as $paciente) {
+                                                    echo '<option value="'.$paciente->getDNI().'">'.$paciente->getDNI().'</option>';
+                                                }
+                                            echo '
+                                            </select>
+                                            <button type="submit" name="update" value="'.$_POST['modificar'].'">Aceptar</button>
+                                        </div>';  
+                                }   
+                            }
                         }
                     }
-                }
-                ?>
-            </ul>
+                    ?>
+                </ul>
+            </div>
         </form>
     </div>
     <div class="footer">

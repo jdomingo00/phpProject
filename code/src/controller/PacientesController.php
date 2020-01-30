@@ -6,7 +6,7 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Departamento.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Paciente.php');
 
-    class MedicosController {
+    class PacientesController {
         public function getAll() {
             $result = Paciente::getAll();
             return $result;
