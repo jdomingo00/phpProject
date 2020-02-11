@@ -49,6 +49,7 @@
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
+    <div class="body"></div>
     <div class="footer">
         <span>Hello, I'm a footer!</span>
     </div>

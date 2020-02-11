@@ -26,13 +26,7 @@
         $sep = explode(' ', $_POST['cancelar']);
         $rtncancel = $medicosctrl->cancelHoraVisita($sep[0], $sep[1], $_GET['numcolegiado']);
     }
-    if (isset($_POST['update'])) {
-        if (isset($_POST['newfecha']) && isset($_POST['newhora']) && isset($_POST['newpaciente'])) {
-            $sep = explode(' ', $_POST['update']);
-            $rtnupdate = $medicosctrl->modificarHoraVisita($sep[0], $sep[1], $_GET['numcolegiado'], $_POST['newfecha'], $_POST['newhora'], $_POST['newpaciente']);
-        }
-        
-    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -140,27 +134,10 @@
                                     Paciente: '. $hora->getPaciente().'
                                     Hora: '. $hora->getHora().' 
                                     Estado: '. $hora->getEstado().'';
-                                echo '<button type="submit" name="modificar" value="'.$hora->getFecha().' '.$hora->getHora().'">Modificar</button>';
                             if ($hora->getEstado()!='Cancelada') {
                                 echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
                             }
                             echo '</li>';
-                            if (isset($_POST['modificar'])) {
-                                if ($_POST['modificar'] == $hora->getFecha().' '.$hora->getHora()) {
-                                    $sep = explode(' ', $_POST['modificar']);
-                                    echo '<div>
-                                            Fecha: <input type="date" name="newfecha" value="'.$sep[0].'" min="'. date('Y-m-d') .'">
-                                            Hora: <input type="time" name="newhora" value="'.$sep[1].'" min="08:00" max="14:00">
-                                            Paciente: <select name="newpaciente" value="'.$hora->getPaciente().'">';
-                                                foreach ($pacientes as $paciente) {
-                                                    echo '<option value="'.$paciente->getDNI().'">'.$paciente->getDNI().'</option>';
-                                                }
-                                            echo '
-                                            </select>
-                                            <button type="submit" name="update" value="'.$_POST['modificar'].'">Aceptar</button>
-                                        </div>';  
-                                }   
-                            }
                         }
                     }
                     ?>
