@@ -49,7 +49,28 @@
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
-    <div class="body"></div>
+    <div class="body">
+        <div class="visitas-container">
+            <ul>
+                <?php
+                    $horas = $pacientesctrl->getHorasVisitaByPaciente($_GET['dni']);
+                    if (count($horas)>0) {
+                        foreach ($horas as $hora) {
+                            echo '<li>
+                                Fecha: '. $hora->getFecha().' 
+                                Paciente: '. $hora->getMedico().'
+                                Hora: '. $hora->getHora().' 
+                                Estado: '. $hora->getEstado().'';
+                        if ($hora->getEstado()!='Cancelada') {
+                            echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
+                        }
+                        echo '</li>';
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+    </div>
     <div class="footer">
         <span>Hello, I'm a footer!</span>
     </div>

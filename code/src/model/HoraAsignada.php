@@ -50,7 +50,11 @@
                 'paciente' => $paciente,
                 'estado' => 'Asignada'
             );
-            return $dbconnection->executeInsert('horasasignadas', $values);
+            $dbconnection->executeQuery('BEGIN;');
+            $dbconnection->executeQuery('LOCK TABLE horasasignadas;');
+            $rtn = $dbconnection->executeInsert('horasasignadas', $values);
+            $dbconnection->executeQuery('COMMIT;');
+            return $rtn;
         }
         public function getHorasVisita($medico) {
             $dbconnection = new DBConnection();
@@ -77,6 +81,22 @@
             );
             $result = $dbconnection->executeDelete('horasasignadas', $condition);
             return $result;
+        }
+        public function getHorasVisitaByPaciente($dni) {
+            $dbconnection = new DBConnection();
+
+            $condition = array('paciente' => $dni);
+            $result = $dbconnection->executeSelect('horasasignadas', $condition);
+
+            $horas = array();
+            if($result != null) {
+                foreach($result as $hora) {
+                    $h = new HoraAsignada();
+                    $h->loadFromDataMap($hora);
+                    array_push($horas, $h);
+                }
+            }
+            return $horas;
         }
         public function modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente) {
             $dbconnection = new DBConnection();
