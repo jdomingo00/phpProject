@@ -4,7 +4,7 @@
     $sessionctrl = new SessionController();
     $pacientesctrl = new PacientesController();
     if ($sessionctrl->checkSessionStarted()) {
-        if ($_SESSION['type']!='a') {
+        if ($_SESSION['type']!='a' && $_SESSION['type']!='m') {
             header('Location:../../index.php');
             exit();
         }
@@ -42,6 +42,11 @@
                 echo '<a class="button" href="listadomedicos.php">Médicos</a>';
                 echo '<a class="button" href="#">Pacientes</a>';
             }
+            //MENU MEDICOS
+            if ($_SESSION['type']=='m') {
+                echo '<a class="button" href="visitasmedico.php">Visitas</a>
+                <a class="button" href="#">Pacientes</a>';
+            }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
@@ -49,8 +54,12 @@
         <?php
             $pacientes = $pacientesctrl->getAll();
             foreach ($pacientes as $paciente) {
-                echo '<a href="./detallepaciente.php?dni='.$paciente->getDni().'">
-                        <div style="padding:2%;background-color: lightgrey; color: black;">
+                 if ($_SESSION['type']=='a') {
+                    echo '<a href="./detallepaciente.php?dni='.$paciente->getDni().'">';
+                 } else if ($_SESSION['type']=='m') {
+                    echo '<a href="./historialpaciente.php?dni='.$paciente->getDni().'">';
+                 }
+                echo '<div style="padding:2%;background-color: lightgrey; color: black;">
                             <div style="width:48%;float:left;">'.
                             $paciente->getFullName().
                             '</div>

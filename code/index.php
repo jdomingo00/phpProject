@@ -37,7 +37,8 @@
                 }
                 //MENU MEDICOS
                 if ($_SESSION['type']=='m') {
-                    echo '<a class="button" href="src/view/visitasmedico.php">Visitas</a>';
+                    echo '<a class="button" href="src/view/visitasmedico.php">Visitas</a>
+                    <a class="button" href="src/view/listadopacientes.php">Pacientes</a>';
                 }
                 echo '<a class="button" href="src/view/logout.php">Logout</a>';
             } else {
