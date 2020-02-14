@@ -134,7 +134,7 @@
                                     Paciente: '. $hora->getPaciente().'
                                     Hora: '. $hora->getHora().' 
                                     Estado: '. $hora->getEstado().'';
-                            if ($hora->getEstado()!='Cancelada') {
+                            if ($hora->getEstado()!='Finalizada') {
                                 echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
                             }
                             echo '</li>';

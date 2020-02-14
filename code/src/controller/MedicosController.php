@@ -22,6 +22,10 @@
             $result = HoraAsignada::insertHoraAsignada($fecha, $hora, $medico, $paciente);
             return $result;
         }
+        public function getNumColegiadoByUname($uname) {
+            $result = Medico::getNumColegiadoByUname($uname);
+            return $result;
+        }
         public function getHorasVisitaByMedico($medico) {
             $horas = HoraAsignada::getHorasVisita($medico);
             return $horas;
@@ -40,6 +44,10 @@
         }
         public function cancelHoraVisita($fecha, $hora, $medico) {
             $horas = HoraAsignada::cancelHoraVisita($fecha, $hora, $medico);
+            return $horas;
+        }
+        public function finalizarHoraVisita($fecha, $hora, $medico) {
+            $horas = HoraAsignada::finalizarHoraVisita($fecha, $hora, $medico);
             return $horas;
         }
         public function modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente) {

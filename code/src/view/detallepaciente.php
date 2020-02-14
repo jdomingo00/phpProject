@@ -1,7 +1,9 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/SessionController.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/PacientesController.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/MedicosController.php');
     $sessionctrl = new SessionController();
+    $medicosctrl = new MedicosController();
     $pacientesctrl = new PacientesController();
     if ($sessionctrl->checkSessionStarted()) {
         if ($_SESSION['type']!='a') {
@@ -15,6 +17,10 @@
     if (!isset($_GET['dni'])) {
         header('Location:./listadopacientes.php');
         exit();
+    }
+    if (isset($_POST['cancelar'])) {
+        $sep = explode(' ', $_POST['cancelar']);
+        $rtncancel = $medicosctrl->cancelHoraVisita($sep[0], $sep[1], $sep[2]);
     }
 ?>
 <!DOCTYPE html>
@@ -50,26 +56,28 @@
         ?>
     </div>
     <div class="body">
-        <div class="visitas-container">
-            <ul>
-                <?php
-                    $horas = $pacientesctrl->getHorasVisitaByPaciente($_GET['dni']);
-                    if (count($horas)>0) {
-                        foreach ($horas as $hora) {
-                            echo '<li>
-                                Fecha: '. $hora->getFecha().' 
-                                Paciente: '. $hora->getMedico().'
-                                Hora: '. $hora->getHora().' 
-                                Estado: '. $hora->getEstado().'';
-                        if ($hora->getEstado()!='Cancelada') {
-                            echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora().'">Cancelar</button>';
+        <?php echo '<form action="./detallepaciente.php?dni='.$_GET['dni'].'" method="post">' ?>
+            <div class="visitas-container">
+                <ul>
+                    <?php
+                        $horas = $pacientesctrl->getHorasVisitaByPaciente($_GET['dni']);
+                        if (count($horas)>0) {
+                            foreach ($horas as $hora) {
+                                echo '<li>
+                                    Fecha: '. $hora->getFecha().' 
+                                    Paciente: '. $hora->getMedico().'
+                                    Hora: '. $hora->getHora().' 
+                                    Estado: '. $hora->getEstado().'';
+                            if ($hora->getEstado()!='Finalizada') {
+                                echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora(). ' ' . $hora->getMedico().'">Cancelar</button>';
+                            }
+                            echo '</li>';
                         }
-                        echo '</li>';
                     }
-                }
-                ?>
-            </ul>
-        </div>
+                    ?>
+                </ul>
+            </div>
+        </form>
     </div>
     <div class="footer">
         <span>Hello, I'm a footer!</span>

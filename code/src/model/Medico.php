@@ -79,6 +79,19 @@
             }
             return $medicos;
         }
+        public function getNumColegiadoByUname($uname) {
+            $dbconnection = new DBConnection();
+
+            $condition = array('uname' => $uname);
+            $result = $dbconnection->executeSelect('medicos', $condition);
+            $numcolegiado = "";
+            $med = new Medico();
+            foreach($result as $medico) {
+                $med->loadFromDataMap($medico);
+                $numcolegiado = $med->getNumColegiado();
+            }
+            return $numcolegiado;
+        }
 
     }
 

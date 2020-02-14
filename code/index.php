@@ -37,6 +37,7 @@
                 }
                 //MENU MEDICOS
                 if ($_SESSION['type']=='m') {
+                    echo '<a class="button" href="src/view/visitasmedico.php">Visitas</a>';
                 }
                 echo '<a class="button" href="src/view/logout.php">Logout</a>';
             } else {
@@ -45,7 +46,13 @@
         ?>
         
     </div>
-
+            <div class="body">
+                <?php 
+                    // if (isset($_SESSION['type'])) {
+                    //     var_dump($_SESSION['type']);
+                    // }
+                ?>
+            </div>
     <div class="footer">
         <span>Hello, I'm a footer!</span>
     </div>

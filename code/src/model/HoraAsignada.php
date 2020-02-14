@@ -82,6 +82,13 @@
             $result = $dbconnection->executeDelete('horasasignadas', $condition);
             return $result;
         }
+        public function finalizarHoraVisita($fecha, $hora, $medico) {
+            $dbconnection = new DBConnection();
+            $query = "UPDATE horasasignadas SET estado='Finalizada' WHERE fecha='".$fecha."' AND hora='".$hora."' AND medico='".$medico."';";
+            error_log($query);
+            $result = $dbconnection->executeQuery($query);
+            return $result;
+        }
         public function getHorasVisitaByPaciente($dni) {
             $dbconnection = new DBConnection();
 
