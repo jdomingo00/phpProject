@@ -1,5 +1,6 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/utils/DBConnection.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/model/Departamento.php');
 
     class User {
         private $uname;
@@ -95,7 +96,18 @@
                 'fecnacimiento' => $fecNacimiento,
                 'mutua' => $mutua
             );
-            return $dbconnection->executeInsert('pacientes', $values);
+            $rtn = $dbconnection->executeInsert('pacientes', $values);
+            $ruta='../../ufiles/'.$dni;
+            mkdir($ruta);
+            $deps = Departamento::getAll();
+            $q = count($deps)/2;
+            for ($i = 0; $i<$q; $i++) {
+                $rutacompleta=$ruta.'/'.$deps['nombre'.$i.''].'.txt';
+                $file = fopen($rutacompleta, 'w');
+                fclose($file);
+            }
+            
+            return $rtn;
         }
         public static function registerM($uname, $password, $fullname, $numcolegiado, $departamento, $tlunes, $tmartes, $tmiercoles, $tjueves, $tviernes, $tsabado, $tdomingo) {
             $dbconnection = new DBConnection();
@@ -201,31 +213,15 @@
             );
             return $dbconnection->executeInsert('administradores', $values);
         }
-        
-        // public static function createClientFromUname($uname) {
-        //     $dbconnection = new DBConnection();
-
-        //     $condition = array('uname' => $uname);
-        //     $result = $dbconnection->executeSelect('client', $condition);
-
-        //     if($result != null) {
-        //         $client = new Client();
-        //         $client->loadFromDataMap($result[0]);
-
-        //         return $client;
-        //     }
-        //     return null;
-        // }
-
-       
-
-        // public function deleteUser($uname) {
-        //     $dbconnection = new DBConnection();
-        //     $condition = array('uname' => $uname);
-        //     error_log($condition);
-        //     $result = $dbconnection->deleteUser('client', $condition);
-        //     return $result;
-        // }
+        public function getFileContent($dni, $dep) {
+            $fcontent=file('../../ufiles/'.$dni.'/'.$dep.'.txt');
+            return $fcontent;
+        }
+         public function addFileContent($dni, $dep, $filecontent) {
+            $file = fopen('../../ufiles/'.$dni.'/'.$dep.'.txt', "a+");
+            fwrite($file, $filecontent."\n");
+            fclose($file);
+        }
 
     }
 

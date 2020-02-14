@@ -77,7 +77,3 @@ INSERT INTO departamentos (nombre) VALUES ('Psiquiatría');
 INSERT INTO departamentos (nombre) VALUES ('Neurología');
 INSERT INTO departamentos (nombre) VALUES ('Medicina general');
 INSERT INTO departamentos (nombre) VALUES ('Dermatología');
-
-INSERT INTO medicos VALUES ('medico1', '1234', 'Medico 1', '2020-01-01', '2020-01-01', '2020-01-01', 'm', '123456789', 1);
-
-INSERT INTO pacientes VALUES ('usuario1', '1234', 'Paciente 1', '2020-01-01', '2020-01-01', '2020-01-01', 'p', '98765432a', '2000-12-26', '54321');

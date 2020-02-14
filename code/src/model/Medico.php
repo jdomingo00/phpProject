@@ -92,6 +92,18 @@
             }
             return $numcolegiado;
         }
+        public function getDepartamentoByMedico($numcolegiado) {
+            $dbconnection = new DBConnection();
+            $condition = array('numcolegiado' => $numcolegiado);
+            $result = $dbconnection->executeSelect('medicos', $condition);
+            $departamento = "";
+            $med = new Medico();
+            foreach($result as $medico) {
+                $med->loadFromDataMap($medico);
+                $departamento = $med->getDepartamento();
+            }
+            return $departamento;
+        }
 
     }
 

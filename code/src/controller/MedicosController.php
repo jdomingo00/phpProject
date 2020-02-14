@@ -50,6 +50,14 @@
             $horas = HoraAsignada::finalizarHoraVisita($fecha, $hora, $medico);
             return $horas;
         }
+        public function getDepartamentoByMedico($medico) {
+            $result = Medico::getDepartamentoByMedico($medico);
+            return $result;
+        }
+        public function getDepName($depid) {
+            $result = Departamento::getDepName($depid);
+            return $result;
+        }
         public function modificarHoraVisita($fecha, $hora, $medico, $newfecha, $newhora, $newpaciente) {
             $dias = array('','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
             $dia = $dias[date('N', strtotime($newfecha))];

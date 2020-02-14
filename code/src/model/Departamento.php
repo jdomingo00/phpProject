@@ -20,7 +20,7 @@
         
         public function getAll() {
             $dbconnection = new DBConnection();
-            $query = 'SELECT * FROM departamentos';
+            $query = 'SELECT * FROM departamentos;';
             $result = $dbconnection->executeAndReturnQuery($query);
             if($result != null) {
                 $q = $dbconnection->getResultNumRow($result);
@@ -52,6 +52,19 @@
         //     }
         //     return 0;
         // }
+
+        public function getDepName($depid) {
+             $dbconnection = new DBConnection();
+            $condition = array('id' => $depid);
+            $result = $dbconnection->executeSelect('departamentos', $condition);
+            $depname = "";
+            $dep = new Departamento();
+            foreach($result as $medico) {
+                $dep->loadFromDataMap($medico);
+                $depname = $dep->getNombre();
+            }
+            return $depname;
+        }
 
         private function loadFromDataMap($datamap) {
             $this->id = $datamap['id'];
