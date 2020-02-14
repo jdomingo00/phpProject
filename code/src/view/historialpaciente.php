@@ -52,7 +52,7 @@
                             foreach ($horas as $hora) {
                                 echo '<li>
                                     Fecha: '. $hora->getFecha().' 
-                                    Paciente: '. $hora->getMedico().'
+                                    Medico: '. $hora->getMedico().'
                                     Hora: '. $hora->getHora().' 
                                     Estado: '. $hora->getEstado().'
                                     <button type="submit" name="modificar" value="'.$hora->getFecha().' '.$hora->getHora(). ' ' . $hora->getMedico().'">Modificar historial</button>';
