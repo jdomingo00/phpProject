@@ -51,20 +51,20 @@
     </div>
     <div class="body">
         <?php echo '<form action="./historialpaciente.php?dni='.$_GET['dni'].'" method="post">' ?>
-                <textarea name="filecontent" placeholder="Texto aqui..." rows="10" style="margin-left:10%;width:80%;margin-top:20px;border: solid 1px black;"></textarea>
-                <div class="form-group-buttons">
-                    <?php
-                        echo '<button type="submit" name="add" value="'.$currdep.'" class="form-button" style="margin-left:37.5%;margin-top:30px;">Añadir al archivo</button>';
-                    ?>
-                </div>
-            <div style="width: 90%; margin-left:5%; min-height: 100px; border: solid black 1px; border-radius: 5px;">
                 <?php
                     $file=$filectrl->getFileContent($_GET['dni'], $currdep);
+                    $filecontent = '';
                     foreach ($file as $counter => $line){
-                        echo $line . '<br/>';
+                        $filecontent = $filecontent . $line;
                     }
+                    echo '<textarea name="filecontent" placeholder="Texto aqui..." rows="10" style="margin-left:10%;width:80%;margin-top:20px;border: solid 1px black;">'.$filecontent.'</textarea>'
                 ?>
-            </div>
+                
+                <div class="form-group-buttons">
+                    <?php
+                        echo '<button type="submit" name="add" value="'.$currdep.'" class="form-button" style="margin-left:37.5%;margin-top:30px;">Guardar fichero</button>';
+                    ?>
+                </div>
         </form>
     </div>
     <div class="footer">

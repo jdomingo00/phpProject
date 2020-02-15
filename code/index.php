@@ -1,6 +1,15 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/SessionController.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/code/src/controller/PacientesController.php');
+
     $sessionctrl = new SessionController();
+    $pacientesctrl = new PacientesController();
+    if ($sessionctrl->checkSessionStarted()) {
+        if($_SESSION['type']=='p') {
+            $dni = $pacientesctrl->getDNIbyUname($_SESSION['uname']);
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +43,8 @@
                 }
                 //MENU PACIENTES
                 if ($_SESSION['type']=='p') {
+                     echo '<a class="button" href="src/view/detallepaciente.php?dni='.$dni.'">Visitas</a>
+                    <a class="button" href="src/view/listadepartamentospaciente.php">Historial</a>';
                 }
                 //MENU MEDICOS
                 if ($_SESSION['type']=='m') {

@@ -6,7 +6,7 @@
     $medicosctrl = new MedicosController();
     $pacientesctrl = new PacientesController();
     if ($sessionctrl->checkSessionStarted()) {
-        if ($_SESSION['type']!='a') {
+        if ($_SESSION['type']!='a' && $_SESSION['type']!='p') {
             header('Location:../../index.php');
             exit();
         }
@@ -52,6 +52,11 @@
                 echo '<a class="button" href="listadomedicos.php">Médicos</a>';
                 echo '<a class="button" href="listadopacientes.php">Pacientes</a>';
             }
+            //MENU PACIENTES
+            if ($_SESSION['type']=='p') {
+                echo '<a class="button" href="#">Visitas</a>
+                    <a class="button" href="listadepartamentospaciente.php">Historial</a>';
+            }
             echo '<a class="button" href="./logout.php">Logout</a>';
         ?>
     </div>
@@ -68,7 +73,7 @@
                                     Medico: '. $hora->getMedico().'
                                     Hora: '. $hora->getHora().' 
                                     Estado: '. $hora->getEstado().'';
-                            if ($hora->getEstado()!='Finalizada') {
+                            if ($hora->getEstado()!='Finalizada' && $_SESSION['type']=='a') {
                                 echo '<button type="submit" name="cancelar" value="'.$hora->getFecha().' '.$hora->getHora(). ' ' . $hora->getMedico().'">Cancelar</button>';
                             }
                             echo '</li>';

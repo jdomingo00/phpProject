@@ -112,6 +112,18 @@
             }
             return array();
         }
+        public function getDNIbyUname($uname) {
+            $dbconnection = new DBConnection();
+            $condition = array('uname' => $uname);
+            $result = $dbconnection->executeSelect('pacientes', $condition);
+            $dni = "";
+            $pac = new Paciente();
+            foreach($result as $paciente) {
+                $pac->loadFromDataMap($paciente);
+                $dni = $pac->getDNI();
+            }
+            return $dni;
+        }
 
     }
 

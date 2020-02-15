@@ -218,8 +218,8 @@
             return $fcontent;
         }
          public function addFileContent($dni, $dep, $filecontent) {
-            $file = fopen('../../ufiles/'.$dni.'/'.$dep.'.txt', "a+");
-            fwrite($file, $filecontent."\n");
+            $file = fopen('../../ufiles/'.$dni.'/'.$dep.'.txt', "w");
+            fwrite($file, $filecontent);
             fclose($file);
         }
 

@@ -15,5 +15,9 @@
             $horas = HoraAsignada::getHorasVisitaByPaciente($dni);
             return $horas;
         }
+        public function getDNIbyUname($uname) {
+            $result = Paciente::getDNIbyUname($uname);
+            return $result;
+        }
     }
 ?>
